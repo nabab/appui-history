@@ -1,0 +1,19 @@
+{
+  "name": "bbn/appui-history",
+  "description": "GUI for managing viewing database actions' history in appui",
+  "keywords": ["database","history","appui"],
+  "homepage": "https://github.com/nabab/appui-history",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thomas Nabet",
+      "email": "thomas.nabet@gmail.com",
+      "homepage": "http://bbn.solutions",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "bbn/bbn": "dev-master"
+  }
+}
