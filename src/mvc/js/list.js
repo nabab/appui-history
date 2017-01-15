@@ -1,8 +1,8 @@
 // Javascript Document
 
 var tables = [];
-for ( var i = 0; i < appui.app.apst.tables.length; i++ ){
-  tables.push({value: appui.app.apst.tables[i], text: appui.app.apst.tables[i].substr(5).replace('_', ' ').toTitleCase()});
+for ( var i = 0; i < bbn.app.apst.tables.length; i++ ){
+  tables.push({value: bbn.app.apst.tables[i], text: bbn.app.apst.tables[i].substr(5).replace('_', ' ').toTitleCase()});
 }
 
 var hist = $("#historique_table").kendoGrid({
@@ -30,9 +30,9 @@ var hist = $("#historique_table").kendoGrid({
     transport: {
       read: function(e) {
         if ( e.data.filter && e.data.filter.filters ){
-          e.data.filter = appui.fn.correctGridPost(e.data.filter);
+          e.data.filter = bbn.fn.correctGridPost(e.data.filter);
         }
-        appui.fn.post("admin/historique", e.data, function(d){
+        bbn.fn.post("admin/historique", e.data, function(d){
           e.success(d);
         });
       },
@@ -73,7 +73,7 @@ var hist = $("#historique_table").kendoGrid({
     width: 130,
     title: "Date",
     template: function(d){
-      return appui.fn.fdate(d.chrono, 1);
+      return bbn.fn.fdate(d.chrono, 1);
     },
   }, {
     field: "adh",
@@ -104,7 +104,7 @@ var hist = $("#historique_table").kendoGrid({
     title: "Colonne(s)",
     sortable: false,
   }, {
-    values: appui.app.apst.users,
+    values: bbn.app.apst.users,
     field: "id_user",
     width: 200,
     title: "Auteur",
@@ -117,7 +117,7 @@ var hist = $("#historique_table").kendoGrid({
       click: function(e){
         var tr = $(e.target).closest("tr"),
           history_id = this.dataItem(tr).history_id;
-        appui.fn.window("historique_ligne", {history_id: history_id});
+        bbn.fn.window("historique_ligne", {history_id: history_id});
       },
       text: "Voir"
     },{
@@ -139,13 +139,13 @@ var hist = $("#historique_table").kendoGrid({
             msg = "supprimer cet enregistrement à nouveau";
             break;
         }
-        appui.fn.confirm("Voulez-vous vraiment " + msg + "?", function(){
-          appui.fn.post("admin/actions/annulation", {history_id: data.history_id}, function(d){
+        bbn.fn.confirm("Voulez-vous vraiment " + msg + "?", function(){
+          bbn.fn.post("admin/actions/annulation", {history_id: data.history_id}, function(d){
             if ( d.result ){
               hist.dataSource.read();
             }
             else{
-              appui.fn.alert("Cela n'a pas fonctionné...<br><br>Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler");
+              bbn.fn.alert("Cela n'a pas fonctionné...<br><br>Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler");
             }
           });
         })
