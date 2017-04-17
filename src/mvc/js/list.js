@@ -1,8 +1,8 @@
 // Javascript Document
 
 var tables = [];
-for ( var i = 0; i < bbn.app.apst.tables.length; i++ ){
-  tables.push({value: bbn.app.apst.tables[i], text: bbn.app.apst.tables[i].substr(5).replace('_', ' ').toTitleCase()});
+for ( var i = 0; i < appui.apst.tables.length; i++ ){
+  tables.push({value: appui.apst.tables[i], text: appui.apst.tables[i].substr(5).replace('_', ' ').toTitleCase()});
 }
 
 var hist = $("#historique_table").kendoGrid({
@@ -104,7 +104,7 @@ var hist = $("#historique_table").kendoGrid({
     title: "Colonne(s)",
     sortable: false,
   }, {
-    values: bbn.app.apst.users,
+    values: appui.apst.users,
     field: "id_user",
     width: 200,
     title: "Auteur",
