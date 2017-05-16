@@ -1,1 +1,1 @@
-<div id="historique_table" class="appui-full-height"></div>
+<div id="historique_table" class="bbn-full-height"></div>

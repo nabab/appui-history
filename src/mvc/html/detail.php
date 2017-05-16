@@ -1,9 +1,9 @@
 <table id="table_historique_ligne">
   <thead>
   <tr>
-    <th><h3 class="appui-c"><?=_("Champ")?></h3></th>
+    <th><h3 class="bbn-c"><?=_("Champ")?></h3></th>
     <?php foreach ( $moments as $m ){ ?>
-      <th><h3 class="appui-c"><?=$m['titre']?></h3></th>
+      <th><h3 class="bbn-c"><?=$m['titre']?></h3></th>
     <?php } ?>
   </tr>
   </thead>
@@ -14,7 +14,7 @@
     <?php
     $i = 0;
     foreach ( $moments as $i => $m ){ ?>
-      <td<?=(($i === 1) && ($l['valeur'] !== $m[0]['lines'][$k]['valeur']) ? ' class="appui-red"' : '')?>>
+      <td<?=(($i === 1) && ($l['valeur'] !== $m[0]['lines'][$k]['valeur']) ? ' class="bbn-red"' : '')?>>
         <?=$l['valeur']?>
       </td>
     <?php
