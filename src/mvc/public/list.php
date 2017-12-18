@@ -1,10 +1,7 @@
 <?php
-if ( isset($ctrl->post['skip']) ){
-  $ctrl->data = $ctrl->post;
-  $ctrl->obj = $ctrl->get_model();
+if ( isset($ctrl->post['limit']) ){
+  $ctrl->obj = $ctrl->get_object_model($ctrl->post);
 }
 else{
-  $ctrl->obj->title = _("Historique d'utilisation");
-  echo $ctrl->get_view();
-  $ctrl->add_js();
+  $ctrl->combo(_("Historique d'utilisation"), true);
 }

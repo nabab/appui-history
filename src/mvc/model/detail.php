@@ -8,7 +8,7 @@ if ( !empty($model->data['history_id']) &&
   $cfg = $model->db->modelize($table);
   if ( $cfg &&
           isset($cfg['keys']['PRIMARY']) &&
-          (count($cfg['keys']['PRIMARY']['columns']) === 1) ){
+          (\count($cfg['keys']['PRIMARY']['columns']) === 1) ){
     $primary = $cfg['keys']['PRIMARY']['columns'][0];
     $tiers = new \apst\tiers($model->db);
     $lieux = new \apst\lieux($model->db);
@@ -52,7 +52,7 @@ if ( !empty($model->data['history_id']) &&
     }
     $res['msg'] .= " par ".$model->inc->outils->user($hist['id_user']);
     foreach ( $res['moments'] as $i => $m ){
-      if ( is_array($m['lines']) ){
+      if ( \is_array($m['lines']) ){
         if ( $i === 0 ){
           if ( $hist['operation'] === 'DELETE' ){
             $all = $model->db->rselect($table, $m['lines'], [$primary => $hist['line'], 'actif' => 0]);
