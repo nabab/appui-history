@@ -1,7 +1,9 @@
 <?php
-if ( isset($ctrl->post['limit']) ){
-  $ctrl->obj = $ctrl->get_object_model($ctrl->post);
-}
-else{
-  $ctrl->combo(_("Historique d'utilisation"), true);
+/** @var $ctrl \bbn\mvc\controller */
+$ctrl->data = $ctrl->post;
+if ( isset($ctrl->data['limit'], $ctrl->data['start']) ){
+  $ctrl->action();
+  }
+else {
+  $ctrl->combo(_("History of use"), true);
 }
