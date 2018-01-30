@@ -58,31 +58,34 @@ MYSQL;
         if ( $r['tab_name'] === 'apst_liens' ){
           $res['data'][$i]['tab_name'] .= ' ('.$type_liens[$model->db->select_one("apst_liens", "type_lien", ['id' => $r['uid']])].')';
         }
-        if ( !empty($res['data'][$i]['adh']) &&
-          !empty($res['data'][$i]['id_adh']) &&
-          !isset($adherents[$res['data'][$i]['id_adh']])
+        if ( !empty($r['adh']) &&
+          !empty($r['id_adh']) &&
+          !isset($adherents[$r['id_adh']])
         ){
-          $adherents[$res['data'][$i]['id_adh']] = $res['data'][$i]['adh'];
+          $adherents[$r['id_adh']] = ['nom' => $r['adh']];
         }
-        if ( empty($res['data'][$i]['id_adh']) &&
+        if ( empty($r['id_adh']) &&
           isset($structures[$r['tab_name']]['fields']['id_adherent']) &&
           ($res['data'][$i]['id_adh'] = $model->db->select_one($r['tab_name'], 'id_adherent', [
             'id' => $r['uid'],
-            'actif' => $r['operation'] === 'DELETE' ? 0 : 1
-          ])) ){
+            'actif' => $r['opr'] === 'DELETE' ? 0 : 1
+          ]))
+        ){
           if ( !isset($adherents[$res['data'][$i]['id_adh']]) ){
-            $adherents[$res['data'][$i]['id_adh']] = $model->db->select_one('apst_adherents', 'nom', [
+            $adherents[$res['data'][$i]['id_adh']] = $model->db->rselect('apst_adherents', ['nom', 'statut'], [
               'id' => $res['data'][$i]['id_adh']
             ]);
           }
-          $res['data'][$i]['adh'] = $adherents[$res['data'][$i]['id_adh']];
+          $res['data'][$i]['adh'] = $adherents[$res['data'][$i]['id_adh']]['nom'];
+          $res['data'][$i]['adh_statut'] = $adherents[$res['data'][$i]['id_adh']]['statut'];
         }
         else if ( $r['tab_name'] === 'apst_adherents' ){
           //$res['data'][$i]['id_adh'] = $r['uid'];
           if ( !isset($adherents[$res['data'][$i]['id_adh']]) ){
-            $adherents[$res['data'][$i]['id_adh']] = $model->db->select_one('apst_adherents', 'nom', ['id' => $res['data'][$i]['id_adh']]);
+            $adherents[$res['data'][$i]['id_adh']] = $model->db->rselect('apst_adherents', ['nom', 'statut'], ['id' => $res['data'][$i]['id_adh']]);
           }
-          $res['data'][$i]['adh'] = $adherents[$res['data'][$i]['id_adh']];
+          $res['data'][$i]['adh'] = $adherents[$res['data'][$i]['id_adh']]['nom'];
+          $res['data'][$i]['adh_statut'] = $adherents[$res['data'][$i]['id_adh']]['statut'];
         }
         else if ( $r['tab_name'] === 'bbn_people' ){
           $res['data'][$i]['adh'] = $tiers->fnom($r['uid']);
