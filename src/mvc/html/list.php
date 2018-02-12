@@ -5,6 +5,7 @@
            :info="true"
            :sortable="true"
            :filterable="true"
+           :multifilter="true"
            :editable="true"
            :order="[{field: 'tst', dir: 'DESC'}]"
 >
@@ -42,19 +43,9 @@
               field="adh"
               :render="renderAdh"
               :width="300"
+              :filterable="false"
   ></bbn-column>
-  <bbn-column title="<?=_('Actions')?>"
-              :buttons="[{
-                title: '<?=_("Seen")?>',
-                icon: 'fa fa-eye',
-                notext: true,
-                command: seen
-              }, {
-                title: '<?=_("Cancel")?>',
-                icon: 'fa fa-undo',
-                notext: true,
-                command: undo
-              }]"
-              :width="100"
+  <bbn-column :buttons="renderButtons"
+              :width="80"
   ></bbn-column>
 </bbn-table>

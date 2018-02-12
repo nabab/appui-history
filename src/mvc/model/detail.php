@@ -3,10 +3,12 @@
 if ( !empty($model->data['uid']) &&
   !empty($model->data['col']) &&
   !empty($model->data['tst']) &&
+  !empty($model->data['usr']) &&
   ($hist = $model->db->rselect('bbn_history', [], [
     'uid' => $model->data['uid'],
     'col' => $model->data['col'],
-    'tst' => $model->data['tst']
+    'tst' => $model->data['tst'],
+    'usr' => $model->data['usr']
   ])) &&
   ($dbc = new \bbn\appui\databases($model->db))
 ){

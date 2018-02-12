@@ -34,13 +34,28 @@
       renderOperation(r){
         return '<span class="' + r.opr.toLowerCase() + '">' + r.opr + '</span>';
       },
+      renderButtons(r){
+        return [{
+          command: this.seen,
+          icon: 'fa fa-eye',
+          text: bbn._('Seen'),
+          notext: true,
+          disabled: (r.opr === 'DELETE') || (r.opr === 'RESTORE')
+        }, {
+          command: this.undo,
+          icon: 'fa fa-trash',
+          text: bbn._('Cancel'),
+          notext: true
+        }];
+      },
       seen(r){
         bbn.vue.closest(this, 'bbn-tab').popup().load({
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
-            col: r.col_id,
-            tst: r.tst
+            col: r.col,
+            tst: r.tst,
+            usr: r.usr
           },
           height: 200,
           width: 700
@@ -62,11 +77,12 @@
             msg = bbn._("supprimer cet enregistrement à nouveau");
             break;
         }
-        /*bbn.fn.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
+        bbn.fn.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
           bbn.fn.post(this.source.root + "actions/cancel", {
             uid: r.uid,
-            col: r.col_id,
-            tst: r.tst
+            col: r.col,
+            tst: r.tst,
+            usr: r.usr
           }, (d) => {
             if ( d.success ){
               this.$refs.table.updateData();
@@ -75,7 +91,7 @@
               bbn.fn.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
             }
           });
-        });*/
+        });
       }
     }
   };

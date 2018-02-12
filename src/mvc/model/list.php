@@ -66,10 +66,12 @@ MYSQL;
         }
         if ( empty($r['id_adh']) &&
           isset($structures[$r['tab_name']]['fields']['id_adherent']) &&
-          ($res['data'][$i]['id_adh'] = $model->db->select_one($r['tab_name'], 'id_adherent', [
-            'id' => $r['uid'],
-            'actif' => $r['opr'] === 'DELETE' ? 0 : 1
-          ]))
+          ($res['data'][$i]['id_adh'] = $model->db->get_one("
+            SELECT id_adherent
+            FROM $r[tab_name]
+            WHERE id = ?",
+            hex2bin($r['uid'])
+          ))
         ){
           if ( !isset($adherents[$res['data'][$i]['id_adh']]) ){
             $adherents[$res['data'][$i]['id_adh']] = $model->db->rselect('apst_adherents', ['nom', 'statut'], [
@@ -80,7 +82,6 @@ MYSQL;
           $res['data'][$i]['adh_statut'] = $adherents[$res['data'][$i]['id_adh']]['statut'];
         }
         else if ( $r['tab_name'] === 'apst_adherents' ){
-          //$res['data'][$i]['id_adh'] = $r['uid'];
           if ( !isset($adherents[$res['data'][$i]['id_adh']]) ){
             $adherents[$res['data'][$i]['id_adh']] = $model->db->rselect('apst_adherents', ['nom', 'statut'], ['id' => $res['data'][$i]['id_adh']]);
           }
