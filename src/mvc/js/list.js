@@ -19,7 +19,7 @@
     methods: {
       renderAdh(row){
         if( row.id_adh && row.adh ){
-          return '<a class="' + apst.get_adherent_class(row.adh_statut) + '"href="adherent/fiche/' + row.id_adh + '">' + row.adh + '</a>';
+          return '<a class="' + appui.app.get_adherent_class(row.adh_statut) + '"href="adherent/fiche/' + row.id_adh + '">' + row.adh + '</a>';
         }
         else {
           return row.adh;
@@ -29,7 +29,7 @@
         return moment(r.dt).format('DD/MM/YYYY HH:mm:ss');
       },
       renderUser(r){
-        return apst.userName(r.usr);
+        return appui.app.userName(r.usr);
       },
       renderOperation(r){
         return '<span class="' + r.opr.toLowerCase() + '">' + r.opr + '</span>';
