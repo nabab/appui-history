@@ -30,7 +30,7 @@
           this.message += bbn._("restaurée");
           break;
       }
-      this.message += bbn._(" par ") + appui.userName(this.source.id_user);
+      this.message += bbn._(" par ") + appui.getUserName(this.source.id_user);
     }
   }
 })();
