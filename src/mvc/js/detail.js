@@ -3,7 +3,8 @@
     data(){
       return {
         message: bbn._("L'entrée a été "),
-        showBefore: false
+        showBefore: false,
+
       }
     },
     computed: {
@@ -30,7 +31,7 @@
           this.message += bbn._("restaurée");
           break;
       }
-      this.message += bbn._(" par ") + appui.getUserName(this.source.id_user);
+      this.message += bbn._(" par ") + appui.app.getUserName(this.source.id_user);
     }
   }
 })();
