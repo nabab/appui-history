@@ -43,7 +43,7 @@
           disabled: (r.opr === 'DELETE') || (r.opr === 'RESTORE')
         }, {
           command: this.undo,
-          icon: 'fa fa-trash',
+          icon: 'fa fa-undo',
           text: bbn._('Cancel'),
           notext: true
         }];
