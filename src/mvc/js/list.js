@@ -77,7 +77,7 @@
             msg = bbn._("supprimer cet enregistrement à nouveau");
             break;
         }
-        bbn.fn.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
+        appui.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
           bbn.fn.post(this.source.root + "actions/cancel", {
             uid: r.uid,
             col: r.col,
@@ -88,7 +88,7 @@
               this.$refs.table.updateData();
             }
             else {
-              bbn.fn.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
+              appui.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
             }
           });
         });
