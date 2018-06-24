@@ -49,7 +49,7 @@
         }];
       },
       seen(r){
-        bbn.vue.closest(this, 'bbn-tab').popup().load({
+        bbn.vue.closest(this, 'bbns-tab').popup().load({
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
@@ -57,7 +57,7 @@
             tst: r.tst,
             usr: r.usr
           },
-          height: 200,
+          
           width: 700
         });
       },

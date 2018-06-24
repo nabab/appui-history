@@ -9,43 +9,44 @@
            :editable="true"
            :order="[{field: 'tst', dir: 'DESC'}]"
 >
-	<bbn-column field="uid"
+	<bbns-column field="uid"
               :hidden="true"
-  ></bbn-column>
-	<bbn-column field="usr"
+  ></bbns-column>
+	<bbns-column field="usr"
               title="<?=_('User')?>"
               :render="renderUser"
               :source="users"
-  ></bbn-column>
-	<bbn-column field="tab_id"
+  ></bbns-column>
+	<bbns-column field="tab_id"
               title="<?=_('Table')?>"
               :source="tables"
               :render="r => r.tab_name"
-  ></bbn-column>
-	<bbn-column field="col_id"
+  ></bbns-column>
+	<bbns-column field="col_id"
               title="<?=_('Column')?>"
               :render="r => r.col_name"
               :source="columns"
-  ></bbn-column>
-	<bbn-column field="dt"
+  ></bbns-column>
+	<bbns-column field="dt"
               title="<?=_('Date & Time')?>"
               type="date"
               :render="renderDate"
               :width="150"
-  ></bbn-column>
-	<bbn-column field="opr"
+  ></bbns-column>
+	<bbns-column field="opr"
               title="<?=_('Operation')?>"
               :render="renderOperation"
               :source="['INSERT', 'UPDATE', 'DELETE', 'RESTORE']"
               :width="150"
-  ></bbn-column>
-  <bbn-column title="<?=_("Élément")?>"
+  ></bbns-column>
+  <bbns-column title="<?=_("Élément")?>"
               field="adh"
               :render="renderAdh"
               :width="300"
               :filterable="false"
-  ></bbn-column>
-  <bbn-column :buttons="renderButtons"
-              :width="80"
-  ></bbn-column>
+  ></bbns-column>
+  <bbns-column :buttons="renderButtons"
+              :width="100"
+              cls="bbn-c"
+  ></bbns-column>
 </bbn-table>
