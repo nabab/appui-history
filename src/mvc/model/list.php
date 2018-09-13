@@ -6,7 +6,7 @@ if ( isset($model->data['limit'], $model->data['start']) ){
 SELECT COUNT(DISTINCT bbn_history.uid, bbn_history.col, bbn_history.tst)
 FROM bbn_history
 	JOIN bbn_history_uids
-  	ON bbn_history_uids.uid = bbn_history.uid
+  	ON bbn_history_uids.bbn_uid = bbn_history.uid
   JOIN bbn_options AS column_option
     ON column_option.id = bbn_history.col
   JOIN bbn_options AS parent_option
@@ -15,17 +15,17 @@ FROM bbn_history
     ON table_option.id = parent_option.id_parent
   JOIN bbn_users
     ON bbn_history.usr = bbn_users.id
-  LEFT JOIN apst_adherents 
+  LEFT JOIN apst_adherents
     ON apst_adherents.uid = bbn_history.uid
 MYSQL;
 
   $query = <<<MYSQL
-SELECT bbn_history.uid, bbn_history.tst, bbn_history.opr, bbn_history.col, bbn_history.usr, bbn_history.dt, 
+SELECT bbn_history.uid, bbn_history.tst, bbn_history.opr, bbn_history.col, bbn_history.usr, bbn_history.dt,
   table_option.id AS tab_id, table_option.text AS tab_name, column_option.id AS col_id, column_option.text AS col_name,
   apst_adherents.nom AS adh, apst_adherents.id AS id_adh, apst_adherents.statut AS adh_statut
 FROM bbn_history
 	JOIN bbn_history_uids
-  	ON bbn_history_uids.uid = bbn_history.uid
+  	ON bbn_history_uids.bbn_uid = bbn_history.uid
   JOIN bbn_options AS column_option
     ON column_option.id = bbn_history.col
   JOIN bbn_options AS parent_option
@@ -34,7 +34,7 @@ FROM bbn_history
     ON table_option.id = parent_option.id_parent
   JOIN bbn_users
     ON bbn_history.usr = bbn_users.id
-  LEFT JOIN apst_adherents 
+  LEFT JOIN apst_adherents
     ON apst_adherents.uid = bbn_history.uid
 MYSQL;
 

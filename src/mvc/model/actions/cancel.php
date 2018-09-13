@@ -5,14 +5,16 @@ if (
   !empty($model->data['tst']) &&
   !empty($model->data['usr']) &&
   !empty($model->data['col']) &&
-  ($id_table = $model->db->select_one('bbn_history_uids', 'id_table', ['uid' => $model->data['uid']]))
+  ($id_table = $model->db->select_one('bbn_history_uids', 'bbn_table', ['bbn_uid' => $model->data['uid']]))
+  //($id_table = $model->db->select_one('bbn_history_uids', 'id_table', ['uid' => $model->data['uid']]))
 ){
   $table = $model->inc->options->code($id_table);
   $dbc = new \bbn\appui\databases($model->db);
   $m = $dbc->modelize($table);
+
   $rows = $model->db->rselect_all('bbn_history', [], [
     'uid' => $model->data['uid'],
-    //'col' => $model->data['col'],
+    'col' => $model->data['col'],
     'tst' => $model->data['tst'],
     'usr' => $model->data['usr']
   ]);
@@ -23,7 +25,7 @@ if (
     switch ( $hist['opr'] ){
       case 'INSERT':
         if ( !$model->db->delete($table, [$primary => $hist['uid']]) ){
-          $errors[] = $hist;
+         $errors[] = $hist;
         }
         break;
       case 'UPDATE':
