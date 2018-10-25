@@ -1,4 +1,4 @@
-<bbn-table :source="source.root + 'list'"
+<bbn-table :source="source.root + 'data/list'"
            class="appui-history-table-main"
            ref="table"
            :pageable="true"
@@ -6,7 +6,6 @@
            :sortable="true"
            :filterable="true"
            :multifilter="true"
-           :editable="true"
            :order="[{field: 'tst', dir: 'DESC'}]"
 >
 	<bbns-column field="uid"
@@ -24,7 +23,7 @@
   ></bbns-column>
 	<bbns-column field="col_id"
               title="<?=_('Column')?>"
-              :render="r => r.col_name"
+              :render="renderCols"
               :source="columns"
   ></bbns-column>
 	<bbns-column field="dt"
@@ -37,13 +36,8 @@
               title="<?=_('Operation')?>"
               :render="renderOperation"
               :source="['INSERT', 'UPDATE', 'DELETE', 'RESTORE']"
+              cls="bbn-c"
               :width="150"
-  ></bbns-column>
-  <bbns-column title="<?=_("Élément")?>"
-              field="adh"
-              :render="renderAdh"
-              :width="300"
-              :filterable="false"
   ></bbns-column>
   <bbns-column :buttons="renderButtons"
               :width="100"

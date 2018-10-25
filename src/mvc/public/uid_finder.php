@@ -1,3 +1,4 @@
 <?php
 /** @var $ctrl \bbn\mvc\controller */
-$ctrl->combo(_("History Uid Finder"), true);
+
+$ctrl->set_icon("fas fa-search")->combo(_("History Uid Finder"), true);

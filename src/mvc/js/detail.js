@@ -1,37 +1,58 @@
 (() => {
   return {
     data(){
+      let items = [];
+      if (Array.isArray(this.source.items)) {
+        items = this.source.items.map(i => {
+          i.json = this.getJSON(i);
+          i.showJSON = !!i.json;
+          return i;
+        });
+      }
       return {
-        message: bbn._("L'entrée a été "),
+        message: bbn._("The entry has been") + ' ',
         showBefore: false,
-
+        items: items
       }
     },
-    computed: {
-      afterText(){
-        return this.source.after === null ? 'NULL' : this.source.after;
+    methods: {
+      setShowJSON(val) {
+        this.$nextTick(() => {
+          this.$forceUpdate();
+        });
       },
-      beforeText(){
-        return this.source.before === null ? 'NULL' : this.source.before;
+      getJSON(item) {
+        let bef = false,
+          aft = false
+        try {
+          bef = JSON.parse(item.before);
+          aft = JSON.parse(item.after);
+        }
+        catch (e) {
+          return false;
+        }
+        if (bef && aft) {
+          return JSON.stringify(bbn.fn.diffObj(bef, aft));
+        }
       }
     },
     mounted(){
       switch ( this.source.operation ){
         case 'INSERT':
-          this.message += bbn._("rajoutée");
+          this.message += bbn._("created");
           break;
         case 'UPDATE':
-          this.message += bbn._("modifiée");
+          this.message += bbn._("modified");
           this.showBefore = true;
           break;
         case 'DELETE':
-          this.message += bbn._("supprimée");
+          this.message += bbn._("deleted");
           break;
         case 'RESTORE':
-          this.message += bbn._("restaurée");
+          this.message += bbn._("restored");
           break;
       }
-      this.message += bbn._(" par ") + appui.app.getUserName(this.source.id_user);
+      this.message += ' ' + bbn._("by") + ' ' + appui.app.getUserName(this.source.id_user);
     }
   }
 })();

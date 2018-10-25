@@ -17,14 +17,6 @@
       }
     },
     methods: {
-      renderAdh(row){
-        if( row.id_adh && row.adh ){
-          return '<a class="' + appui.app.get_adherent_class(row.adh_statut) + '"href="adherent/fiche/' + row.id_adh + '">' + row.adh + '</a>';
-        }
-        else {
-          return row.adh;
-        }
-      },
       renderDate(r){
         return moment(r.dt).format('DD/MM/YYYY HH:mm:ss');
       },
@@ -33,6 +25,16 @@
       },
       renderOperation(r){
         return '<span class="' + r.opr.toLowerCase() + '">' + r.opr + '</span>';
+      },
+      renderCols(row) {
+        let cols = row.col_name.split(',')
+        res = '';
+        if (cols.length) {
+          cols.forEach((c, i) => {
+            res += c + (cols[i + 1] !== undefined ? '<br>' : '');
+          });
+        }
+        return res;
       },
       renderButtons(r){
         return [{
@@ -53,7 +55,7 @@
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
-            col: r.col,
+            col: r.col_id,
             tst: r.tst,
             usr: r.usr
           },
@@ -77,10 +79,10 @@
             msg = bbn._("supprimer cet enregistrement à nouveau");
             break;
         }
-        appui.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
+        this.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
           bbn.fn.post(this.source.root + "actions/cancel", {
             uid: r.uid,
-            col: r.col,
+            col: r.col_id,
             tst: r.tst,
             usr: r.usr
           }, (d) => {
@@ -88,7 +90,7 @@
               this.$refs.table.updateData();
             }
             else {
-              appui.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
+              this.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
             }
           });
         });
