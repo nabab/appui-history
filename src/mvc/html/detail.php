@@ -13,7 +13,7 @@
 		</div>
 		<div v-if="item.showJSON"  class="bbn-flex-width">
 			<div class="k-header bbn-c" style="width: 150px">
-				<h4><?=_("JSON")?></h4>
+				<h4>JSON</h4>
 				<br>
 				<bbn-switch v-model="item.showJSON"
 										:value="true"
@@ -30,7 +30,7 @@
 		<div v-else>
 			<div v-if="!!item.json" class="bbn-flex-width">
 				<div class="k-header bbn-middle" style="width: 150px">
-					<h4><?=_("JSON")?></h4>
+					<h4>JSON</h4>
 				</div>
 				<div class="bbn-flex-fill k-block bbn-vmiddle">
 					<bbn-switch v-model="item.showJSON"

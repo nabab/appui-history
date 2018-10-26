@@ -67,19 +67,19 @@
         let msg;
         switch ( r.opr ){
           case "INSERT":
-            msg = bbn._("supprimer cet enregistrement");
+            msg = bbn._("delete this record");
             break;
           case "UPDATE":
-            msg = bbn._("revenir à la valeur précédente");
+            msg = bbn._("go back to the previous value");
             break;
           case "DELETE":
-            msg = bbn._("restaurer cet enregistrement");
+            msg = bbn._("restore this record");
             break;
           case "RESTORE":
-            msg = bbn._("supprimer cet enregistrement à nouveau");
+            msg = bbn._("delete this record again");
             break;
         }
-        this.confirm(bbn._("Voulez-vous vraiment ") + msg + "?", () => {
+        this.confirm(bbn._("Do you really want to") + ' ' + msg + "?", () => {
           bbn.fn.post(this.source.root + "actions/cancel", {
             uid: r.uid,
             col: r.col_id,
@@ -90,7 +90,7 @@
               this.$refs.table.updateData();
             }
             else {
-              this.alert(bbn._("Cela n'a pas fonctionné...") + ' <br><br>' + bbn._("Merci de créer un bug en spécifiant l'entrée de l'historique que vous n'avaez pas pu annuler"));
+              this.alert(bbn._("This didn't work...") + ' <br><br>' + bbn._("Thanks to create a bug with the UID you couldn't cancel"));
             }
           });
         });

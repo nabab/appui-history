@@ -15,14 +15,14 @@
 <div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
 >
   <div v-if="table.length">
-    <?=_('Table: ')?>
+    <?=_('Table')?>:
   </div>
   <div v-text="table ? table : ''">
   </div>
 </div>
 <div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
 >
-  <div v-if="active"><?=_('Active: ')?>
+  <div v-if="active"><?=_('Active')?>:
   </div>
   <div v-if="active">
   	<div v-text="active" style="display:inline">
@@ -42,7 +42,7 @@
        class="bbn-large"
        :title="(opr.length === 1) ? opr.length +' operation' : opr.length +' operations'"
   >
-     <?=_('Operation(s): ')?>
+     <?=_('Operation(s)')?>:
  	</div>
   <div style="position:relative; height:650px" class="list-container">
     <bbn-scroll>
