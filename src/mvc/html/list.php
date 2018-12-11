@@ -7,8 +7,11 @@
            :filterable="true"
            :multifilter="true"
            :order="[{field: 'tst', dir: 'DESC'}]"
+           :showable="true"
 >
-	<bbns-column field="uid"
+	<bbns-column title="<?=_('UID')?>"
+              field="uid"
+              :width="260"
               :hidden="true"
   ></bbns-column>
 	<bbns-column field="usr"

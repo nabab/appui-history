@@ -13,7 +13,7 @@ if ( !empty($uid = $model->data['uid']) ){
   $active = $row['bbn_active'];
   
   $table_name = $model->inc->options->text($table);
-  $opr = $model->db->rselect_all([
+  if ( $opr = $model->db->rselect_all([
     'table' => 'bbn_history',
     'fields' => [
       'col' => 'bbn_options.text', 
@@ -34,9 +34,16 @@ if ( !empty($uid = $model->data['uid']) ){
       ]
     ]],
     'order' => [['field' => 'tst', 'dir' => 'DESC']]
-  ]) ?: [];
+  ]) ){
+    if( !empty($table_name) ){
+      $success = true;  
+    }
+  }
+  else {
+    $opr = []; 
+  }
   
-  $success = true;
+  
   
   
  

@@ -22,16 +22,16 @@
 </div>
 <div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
 >
-  <div v-if="active"><?=_('Active')?>:
+  <div v-if="table"><?=_('Active')?>:
   </div>
-  <div v-if="active">
+  <div v-if="table">
   	<div v-text="active" style="display:inline">
   	</div>
-    <bbn-button icon="fas fa-times"
-                class="bbn-xsmall"
-                :notext="true"
+    <bbn-button icon="far fa-trash-alt"
+                class="bbn-small"
+                text="<?=("Delete completely from db?")?>"
                 @click="removeAll"
-                title="<?=_("Delete completely")?>"
+                title="<?=("Delete completely from db?")?>"
                 style="margin-left:1rem"
    	></bbn-button>
   </div>

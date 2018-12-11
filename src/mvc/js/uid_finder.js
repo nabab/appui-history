@@ -6,7 +6,8 @@
         uid: '',
         table: '',
         opr: [],
-        active: null
+        active: null,
+        
       }
     },
     methods: {
@@ -16,7 +17,7 @@
             uid: this.uid, 
          }, (d) => {
             if ( d.success ){
-              appui.success(d.count + bbn._(' entries successfully removed'));
+              appui.success(bbn._('Entries successfully removed from db'));
               this.opr = [];
               this.active= null;
               this.table= '';
@@ -56,20 +57,20 @@
           appui.error(bbn._('Check the inserted uid'))
         }
         else{
-        	if( this.uid.length === 32){
-          bbn.fn.post(this.source.root + 'actions/uid_find', {
-            uid: this.uid
-          }, (d) => {
-            if ( d.success ){
-              this.table = d.table, 
-              this.opr = d.opr, 
-              this.active = d.active
-            }
-            else{
-              appui.error(bbn._('uid not found'))
-            }
-          	});
-        	} 
+        	if ( this.uid.length === 32) {
+            bbn.fn.post(this.source.root + 'actions/uid_find', {
+              uid: this.uid
+            }, (d) => {
+              if ( d.success ){
+                this.table = d.table, 
+                this.opr = d.opr, 
+                this.active = d.active
+              }
+              else {
+                appui.error(bbn._('Uid not found'))
+              }
+            });
+          } 
           else{
             appui.error(bbn._('Insert an uid before to search'))
           }

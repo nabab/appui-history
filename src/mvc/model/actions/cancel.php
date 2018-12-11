@@ -44,7 +44,22 @@ if (
         }
         break;
       case 'DELETE':
-        if ( !$model->db->update('bbn_history_uids', [$h => 1], [$primary => $hist['uid'], $h => 0]) ){
+        if ( !$model->db->update([
+          'tables' => ['bbn_history_uids'],
+          'fields' => [
+            $h => 1
+          ],
+          'where' => [
+            'conditions' => [
+              [
+                'field' => 'bbn_uid',
+                'operator' => '=',
+                'value' => $hist['uid']
+              ]
+            ],
+            'logic' => 'AND'
+          ]
+        ]) ){
           $errors[] = $hist;
         }
         break;

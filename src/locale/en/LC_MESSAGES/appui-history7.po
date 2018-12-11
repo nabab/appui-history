@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-10-26 13:21+0200\n"
-"POT-Revision-Date: 2018-10-26 13:21+0200\n"
+"POT-Creation-Date: 2018-12-10 13:46+0100\n"
+"POT-Revision-Date: 2018-12-10 13:46+0100\n"
 "Language: en\n"
 "X-Domain: appui-history7\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -24,6 +24,10 @@ msgstr "Before"
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/detail.php
 msgid "After"
 msgstr "After"
+
+#: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "UID"
+msgstr "UID"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/list.php
 msgid "User"
@@ -44,7 +48,7 @@ msgstr "Date & Time"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/list.php
 msgid "Operation"
-msgstr "Opération"
+msgstr "Operation"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
 msgid "Type an uid"
@@ -57,10 +61,6 @@ msgstr "Search uid"
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
 msgid "Active"
 msgstr "Active"
-
-#: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
-msgid "Delete completely"
-msgstr "Delete completely"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
 msgid "Operation(s)"
@@ -131,8 +131,8 @@ msgid "Are you sure you want to remove all?"
 msgstr "Are you sure you want to remove all?"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
-msgid " entries successfully removed"
-msgstr "entries successfully removed"
+msgid "Entries successfully removed from db"
+msgstr "Entries successfully removed from db"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
 msgid "Something went wrong while deleting all"
@@ -155,7 +155,7 @@ msgid "Check the inserted uid"
 msgstr "Check the inserted uid"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
-msgid "uid not found"
+msgid "Uid not found"
 msgstr "uid not found"
 
 #: /home/thomas/domains/apstapp2.thomas.lan/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js

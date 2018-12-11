@@ -5,7 +5,7 @@
  **/
 
 /** @var $this \bbn\mvc\model*/
-bbn\appui\history::disable();
+//bbn\appui\history::disable();
 
 if ( !empty($entry = $model->data['entry']) && !empty($model->data['uid']) ){
   $success = false;
@@ -16,7 +16,7 @@ if ( !empty($entry = $model->data['entry']) && !empty($model->data['uid']) ){
     'tst' => $entry['tst'],
     'usr' => $entry['usr']
   ] );
-  bbn\appui\history::enable();
+  //bbn\appui\history::enable();
 
   return [
     'success' => $success
