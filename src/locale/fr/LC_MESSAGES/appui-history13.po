@@ -7,10 +7,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-10-26 13:41+0200\n"
-"POT-Revision-Date: 2018-10-26 13:41+0200\n"
+"POT-Creation-Date: 2019-02-14 04:56+0100\n"
+"POT-Revision-Date: 2019-02-14 04:56+0100\n"
 "Language: fr\n"
-"X-Domain: appui-history6\n"
+"X-Domain: appui-history13\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/detail.php
@@ -24,6 +24,10 @@ msgstr "Avant"
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/detail.php
 msgid "After"
 msgstr "Après"
+
+#: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "UID"
+msgstr "UID"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/list.php
 msgid "User"
@@ -57,10 +61,6 @@ msgstr "Recherchez l'UID"
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
 msgid "Active"
 msgstr "Actif"
-
-#: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
-msgid "Delete completely"
-msgstr "Supprimer complètement"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
 msgid "Operation(s)"
@@ -100,7 +100,7 @@ msgstr "Annuler"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/list.js
 msgid "delete this record"
-msgstr ""
+msgstr "supprimer cet enregistrement"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/list.js
 msgid "go back to the previous value"
@@ -131,8 +131,8 @@ msgid "Are you sure you want to remove all?"
 msgstr "Êtes-vous sûr de vouloir tout supprimer?"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
-msgid " entries successfully removed"
-msgstr "Enregistrements supprimés avec succès"
+msgid "Entries successfully removed from db"
+msgstr "Les entrées ont été supprimées de la base de données"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
 msgid "Something went wrong while deleting all"
@@ -155,7 +155,7 @@ msgid "Check the inserted uid"
 msgstr "Vérifier l'UID insérée"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
-msgid "uid not found"
+msgid "Uid not found"
 msgstr "UID introuvable"
 
 #: /home/app2/_appui/vendor/bbn/appui-history/src/mvc/js/uid_finder.js

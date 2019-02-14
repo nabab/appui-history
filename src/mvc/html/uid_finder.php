@@ -1,6 +1,7 @@
 <div class="bbn-lpadded bbn-grid-fields">
   <bbn-input placeholder="<?=_('Type an uid')?>"
              v-model="uid"
+             @keydown.enter="searchUid"
   ></bbn-input>
   <div>
   	<bbn-button icon="fas fa-search"
