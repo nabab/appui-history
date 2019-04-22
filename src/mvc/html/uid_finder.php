@@ -4,7 +4,7 @@
              @keydown.enter="searchUid"
   ></bbn-input>
   <div>
-  	<bbn-button icon="fas fa-search"
+  	<bbn-button icon="nf nf-fa-search"
               class="bbn-small"
               :notext="true"
               @click="searchUid"
@@ -28,7 +28,7 @@
   <div v-if="table">
   	<div v-text="active" style="display:inline">
   	</div>
-    <bbn-button icon="far fa-trash-alt"
+    <bbn-button icon="nf nf-fa-trash_alt"
                 class="bbn-small"
                 text="<?=("Delete completely from db?")?>"
                 @click="removeAll"
@@ -61,7 +61,7 @@
           <div v-text="opr[idx].usr ? username(opr[idx].usr) : '-'"></div>
           <div v-text="opr[idx].dt ? fdate(opr[idx].dt) : '-'" ></div>
           <div>
-            <i class="fas fa-times bbn-p" @click="deleteRow(o, idx)"></i>
+            <i class="nf nf-fa-times bbn-p" @click="deleteRow(o, idx)"></i>
           </div>
           <div class="k-widget" style="grid-column: 1/6!important;width:100%!important;">
           </div>

@@ -39,19 +39,19 @@
       renderButtons(r){
         return [{
           command: this.seen,
-          icon: 'fas fa-eye',
+          icon: 'nf nf-fa-eye',
           text: bbn._('Seen'),
           notext: true,
           disabled: (r.opr === 'DELETE') || (r.opr === 'RESTORE')
         }, {
           command: this.undo,
-          icon: 'fas fa-undo',
+          icon: 'nf nf-fa-undo',
           text: bbn._('Cancel'),
           notext: true
         }];
       },
       seen(r){
-        bbn.vue.closest(this, 'bbns-tab').popup().load({
+        bbn.vue.closest(this, 'bbns-container').popup().load({
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
