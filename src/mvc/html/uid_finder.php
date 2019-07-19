@@ -63,7 +63,7 @@
           <div>
             <i class="nf nf-fa-times bbn-p" @click="deleteRow(o, idx)"></i>
           </div>
-          <div class="k-widget" style="grid-column: 1/6!important;width:100%!important;">
+          <div class="bbn-widget" style="grid-column: 1/6!important;width:100%!important;">
           </div>
         </li>		   
       </ul>
