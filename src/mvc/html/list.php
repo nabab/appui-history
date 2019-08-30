@@ -31,7 +31,7 @@
   ></bbns-column>
 	<bbns-column field="dt"
               title="<?=_('Date & Time')?>"
-              type="date"
+              type="datetime"
               :render="renderDate"
               :width="150"
   ></bbns-column>

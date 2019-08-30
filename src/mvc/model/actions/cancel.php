@@ -20,7 +20,6 @@ if (
     'tst' => $model->data['tst'],
     'usr' => $model->data['usr']
   ]);
-  
   if ( !empty($rows) ){
     $hist = [
      'uid' => $model->data['uid'],
@@ -44,24 +43,30 @@ if (
         }
         break;
       case 'DELETE':
-        if ( !$model->db->update([
-          'tables' => ['bbn_history_uids'],
-          'fields' => [
-            $h => 1
-          ],
-          'where' => [
-            'conditions' => [
-              [
-                'field' => 'bbn_uid',
-                'operator' => '=',
-                'value' => $hist['uid']
-              ]
-            ],
-            'logic' => 'AND'
-          ]
-        ]) ){
+        \bbn\appui\history::disable();
+        if ( $original = $model->db->rselect($table, [], [$primary => $model->data['uid']]) ){
+          \bbn\appui\history::enable();
+          if ( !$model->db->insert($table, $original) ){
+            $errors[] = $hist;
+          }
+        }
+        else {
+          \bbn\appui\history::enable();
           $errors[] = $hist;
         }
+        /* if ( !$model->db->update([
+          'table' => 'bbn_history_uids',
+          'fields' => [$h => 1],
+          'where' => [
+            'conditions' => [[
+              'field' => 'bbn_uid',
+              'value' => $hist['uid']
+            ]]
+          ]
+        ]) ){ 
+          $errors[] = $hist;
+        }
+        */
         break;
       case 'RESTORE':
         if ( !$model->db->delete($table, [$primary => $hist['uid']]) ){

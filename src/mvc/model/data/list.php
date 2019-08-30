@@ -7,7 +7,7 @@ SELECT * FROM (
     `bbn_history`.`tst`,
     `bbn_history`.`opr`,
     `bbn_history`.`usr` AS `usr`,
-    `bbn_history`.`dt`,
+    DATE_FORMAT(`bbn_history`.`dt`, '%Y-%m-%d %H:%i') AS `dt`,
     `table_option`.`id` AS `tab_id`,
     `table_option`.`text` AS `tab_name`,
     GROUP_CONCAT(LOWER(HEX(`bbn_history`.`col`)) SEPARATOR ',') AS `col_id`,
@@ -37,8 +37,7 @@ MYSQL;
       'h.opr'=> 'bbn_history.opr'
     ],
     'query' => $query,
-    'num' => 1,
-    'count' => true
+    'num' => 1
   ]);
   $cfg = $grid->get_cfg();
   $num = $model->db->get_one("
@@ -53,20 +52,19 @@ MYSQL;
       return $v;
     }, $cfg['values']) : []
   );
-  $grid = new \bbn\appui\grid($model->db, $model->data, [
-    'tables' => [
-      'h' => 'bbn_history',
-      'bbn_history'
-    ],
-    'fields' => [
-      'h.usr'=> 'bbn_history.usr',
-      'h.opr'=> 'bbn_history.opr'
-    ],
-    'query' => $query,
-    'num' => $num,
-    'count' => true
-  ]);
   if ( $grid->check() ){
-    return $grid->get_datatable();
+    $ret = [
+      'data' => $grid->get_data(),
+      'total' => $num,
+      'success' => true,
+      'error' => false
+    ];
+    if ( isset($model->data['start']) ){
+      $ret['start'] = $model->data['start'];
+    }
+    if ( isset($model->data['limit']) ){
+      $ret['limit'] = $model->data['limit'];
+    }
+    return $ret;
   }
 }
