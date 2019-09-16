@@ -80,7 +80,7 @@
             break;
         }
         this.confirm(bbn._("Do you really want to") + ' ' + msg + "?", () => {
-          bbn.fn.post(this.source.root + "actions/cancel", {
+          this.post(this.source.root + "actions/cancel", {
             uid: r.uid,
             col: r.col_id,
             tst: r.tst,

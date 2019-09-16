@@ -13,7 +13,7 @@
     methods: {
       removeAll(){
         this.confirm(bbn._('Are you sure you want to remove all?'), () => {
-          bbn.fn.post(this.source.root + 'actions/delete_all', {
+          this.post(this.source.root + 'actions/delete_all', {
             uid: this.uid, 
          }, (d) => {
             if ( d.success ){
@@ -32,7 +32,7 @@
       },
       deleteRow(o, idx){
         this.confirm(bbn._('Are you sure you want to delete this entry from bbn_history?'), () => {
-          bbn.fn.post(this.source.root + 'actions/delete_history_entry', {
+          this.post(this.source.root + 'actions/delete_history_entry', {
          	entry: o, 
           uid: this.uid
         }, (d) => {
@@ -58,7 +58,7 @@
         }
         else{
         	if ( this.uid.length === 32) {
-            bbn.fn.post(this.source.root + 'actions/uid_find', {
+            this.post(this.source.root + 'actions/uid_find', {
               uid: this.uid
             }, (d) => {
               if ( d.success ){
