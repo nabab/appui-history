@@ -38,13 +38,13 @@
       },
       renderButtons(r){
         return [{
-          command: this.seen,
+          action: this.seen,
           icon: 'nf nf-fa-eye',
           text: bbn._('Seen'),
           notext: true,
           disabled: (r.opr === 'DELETE') || (r.opr === 'RESTORE')
         }, {
-          command: this.undo,
+          action: this.undo,
           icon: 'nf nf-fa-undo',
           text: bbn._('Cancel'),
           notext: true
