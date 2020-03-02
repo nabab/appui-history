@@ -1,70 +1,110 @@
 <?php
-if ( isset($model->data['limit'], $model->data['start']) ){
-  $query = <<<MYSQL
-SELECT * FROM (
-  SELECT 
-    `bbn_history`.`uid` AS `uid`,
-    `bbn_history`.`tst`,
-    `bbn_history`.`opr`,
-    `bbn_history`.`usr` AS `usr`,
-    DATE_FORMAT(`bbn_history`.`dt`, '%Y-%m-%d %H:%i') AS `dt`,
-    `table_option`.`id` AS `tab_id`,
-    `table_option`.`text` AS `tab_name`,
-    GROUP_CONCAT(LOWER(HEX(`bbn_history`.`col`)) SEPARATOR ',') AS `col_id`,
-    GROUP_CONCAT(`column_option`.`text` SEPARATOR ',') AS `col_name`
-  FROM `bbn_history`
-    JOIN `bbn_history_uids`
-      ON `bbn_history_uids`.`bbn_uid` = `bbn_history`.`uid`
-    JOIN `bbn_options` AS `column_option`
-      ON `column_option`.`id` = `bbn_history`.`col`
-    JOIN `bbn_options` AS `parent_option`
-      ON `parent_option`.`id` = `column_option`.`id_parent`
-    JOIN `bbn_options` AS `table_option`
-      ON `table_option`.`id` = `parent_option`.`id_parent`
-    JOIN `bbn_users`
-      ON `bbn_history`.`usr` = `bbn_users`.`id`
-  GROUP BY `bbn_history`.`opr`, `bbn_history`.`uid`, `bbn_history`.`tst`, `bbn_history`.`usr`
-) AS h
-MYSQL;
-
-  $grid = new \bbn\appui\grid($model->db, $model->data, [
-    'tables' => [
-      'h' => 'bbn_history',
-      'bbn_history'
-    ],
+if ($model->has_data(['limit', 'start'])) {
+  $cfg = [
+    'tables' => 'bbn_history',
     'fields' => [
-      'h.usr'=> 'bbn_history.usr',
-      'h.opr'=> 'bbn_history.opr'
+      'uid',
+      'tst',
+      'opr',
+      'usr',
+      'dt',
+      'tab_name' => 'ot.text',
+      'tab_id' => 'bbn_history_uids.bbn_table',
+      'col_name' => 'oc.text',
+      'col_id' => 'col'
     ],
-    'query' => $query,
-    'num' => 1
-  ]);
-  $cfg = $grid->get_cfg();
-  $num = $model->db->get_one("
-    SELECT COUNT(*) FROM (".
-      $query.PHP_EOL.
-      $model->db->get_where($cfg).
-    ") AS mytot",
-    !empty($cfg['values']) ? array_map(function($v){
-      if ( \bbn\str::is_uid($v) ){
-        return hex2bin($v);
-      }
-      return $v;
-    }, $cfg['values']) : []
-  );
-  if ( $grid->check() ){
-    $ret = [
-      'data' => $grid->get_data(),
-      'total' => $num,
-      'success' => true,
-      'error' => false
-    ];
-    if ( isset($model->data['start']) ){
-      $ret['start'] = $model->data['start'];
-    }
-    if ( isset($model->data['limit']) ){
-      $ret['limit'] = $model->data['limit'];
-    }
-    return $ret;
+    'join' => [
+      [
+        'table' => 'bbn_history_uids',
+        'on' => [[
+          'field' => 'bbn_uid',
+          'exp' => 'uid'
+        ]]
+      ], [
+        'table' => 'bbn_options',
+        'alias' => 'ot',
+        'on' => [[
+          'field' => 'ot.id',
+          'exp' => 'bbn_table'
+        ]]
+      ], [
+        'table' => 'bbn_options',
+        'alias' => 'oc',
+        'on' => [[
+          'field' => 'oc.id',
+          'exp' => 'col'
+        ]]
+      ]
+    ],
+    'start' => $model->data['start'],
+    'order' => [
+      'tst' => 'DESC'
+    ]
+  ];
+  if (!empty($model->data['filters'])) {
+    $cfg['where'] = $model->data['filters'];
   }
+  if (!empty($model->data['order'])) {
+    $cfg['order'] = $model->data['order'];
+  }
+  $tot = 0;
+  $start = $model->data['start'];
+  $combi = null;
+  $num = -1;
+  $res = [];
+  while ($row = $model->db->rselect($cfg)) {
+    $cfg['start']++;
+    $tmp = $row['uid'].'-'.$row['opr'].'-'.$row['usr'].'-'.$row['tst'];
+    if ($tmp !== $combi) {
+      $combi = $tmp;
+      $num++;
+      if ($num === $model->data['limit']) {
+        break;
+      }
+      else {
+        $res[$num] = $row;
+      }
+    }
+    else if (!empty($res[$num])) {
+      $res[$num]['col_id'] .= ','.$row['col_id'];
+      $res[$num]['col_name'] .= ','.$row['col_name'];
+    }
+  }
+  $count_cfg = [
+    'tables' => ['bbn_history'],
+    'fields' => ['COUNT(DISTINCT uid, usr, tst, opr)'],
+    'join' => [
+      [
+        'table' => 'bbn_history_uids',
+        'on' => [[
+          'field' => 'bbn_uid',
+          'exp' => 'uid'
+        ]]
+      ], [
+        'table' => 'bbn_options',
+        'alias' => 'ot',
+        'on' => [[
+          'field' => 'ot.id',
+          'exp' => 'bbn_table'
+        ]]
+      ], [
+        'table' => 'bbn_options',
+        'alias' => 'oc',
+        'on' => [[
+          'field' => 'oc.id',
+          'exp' => 'col'
+        ]]
+      ]
+    ]
+  ];
+  if (!empty($model->data['filters'])) {
+    $count_cfg['where'] = $model->data['filters'];
+  }
+  $ret = [
+    'data' => $res,
+    'total' => $model->db->select_one($count_cfg),
+    'success' => true,
+    'error' => false
+  ];
+  return $ret;
 }
