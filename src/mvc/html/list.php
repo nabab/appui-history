@@ -19,12 +19,12 @@
               :render="renderUser"
               :source="users"
   ></bbns-column>
-	<bbns-column field="tab_id"
+	<bbns-column field="bbn_table"
               title="<?=_('Table')?>"
               :source="tables"
               :render="r => r.tab_name"
   ></bbns-column>
-	<bbns-column field="col_id"
+	<bbns-column field="col"
               title="<?=_('Column')?>"
               :render="renderCols"
               :source="columns"

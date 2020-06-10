@@ -9,9 +9,9 @@ if ($model->has_data(['limit', 'start'])) {
       'usr',
       'dt',
       'tab_name' => 'ot.text',
-      'tab_id' => 'bbn_history_uids.bbn_table',
+      'bbn_table' => 'bbn_history_uids.bbn_table',
       'col_name' => 'oc.text',
-      'col_id' => 'col'
+      'col'
     ],
     'join' => [
       [

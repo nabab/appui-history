@@ -55,7 +55,7 @@
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
-            col: r.col_id,
+            col: r.col,
             tst: r.tst,
             usr: r.usr
           },
@@ -82,7 +82,7 @@
         this.confirm(bbn._("Do you really want to") + ' ' + msg + "?", () => {
           this.post(this.source.root + "actions/cancel", {
             uid: r.uid,
-            col: r.col_id,
+            col: r.col,
             tst: r.tst,
             usr: r.usr
           }, (d) => {
