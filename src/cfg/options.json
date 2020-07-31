@@ -1,0 +1,8 @@
+[{
+  "text": "History",
+  "code": "last_changes",
+  "id_parent": ["default","dashboard","appui"],
+  "id_alias": ["last_changes","appui-dashboard","plugins","|*appui-history*|/","page","permissions","appui"],
+  "value": "{\"limit\":5,\"observe\":false,\"options\":{},\"closable\":true,\"component\":\"appui-history-widget-changes-last\",\"buttonsLeft\":[],\"buttonsRight\":[]}",
+  "after": 1
+}]
