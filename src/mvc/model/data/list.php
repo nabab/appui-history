@@ -1,5 +1,15 @@
 <?php
-if ($model->has_data(['limit', 'start'])) {
+use bbn\x;
+/**
+ * @var bbn\mvc\model $model
+ */
+$timer = new \bbn\util\timer();
+$timer->start();
+
+if ($model->has_data(['limit', 'start'])
+    && ($history_cfg = $model->get_model('history/config'))
+) {
+  x::log(['ENTERING DATA', $timer->measure()]);
   $cfg = [
     'tables' => 'bbn_history',
     'fields' => [
@@ -8,10 +18,8 @@ if ($model->has_data(['limit', 'start'])) {
       'opr',
       'usr',
       'dt',
-      'tab_name' => 'ot.text',
-      'bbn_table' => 'bbn_history_uids.bbn_table',
-      'col_name' => 'oc.text',
-      'col'
+      'bbn_table',
+      'col' => "GROUP_CONCAT(HEX(col) separator ',')"
     ],
     'join' => [
       [
@@ -20,25 +28,18 @@ if ($model->has_data(['limit', 'start'])) {
           'field' => 'bbn_uid',
           'exp' => 'uid'
         ]]
-      ], [
-        'table' => 'bbn_options',
-        'alias' => 'ot',
-        'on' => [[
-          'field' => 'ot.id',
-          'exp' => 'bbn_table'
-        ]]
-      ], [
-        'table' => 'bbn_options',
-        'alias' => 'oc',
-        'on' => [[
-          'field' => 'oc.id',
-          'exp' => 'col'
-        ]]
       ]
     ],
     'start' => $model->data['start'],
+    'limit' => $model->data['limit'],
     'order' => [
       'tst' => 'DESC'
+    ],
+    'group_by' => [
+      'tst',
+      'uid',
+      'usr',
+      'opr'
     ]
   ];
   if (!empty($model->data['filters'])) {
@@ -52,23 +53,17 @@ if ($model->has_data(['limit', 'start'])) {
   $combi = null;
   $num = -1;
   $res = [];
-  while ($row = $model->db->rselect($cfg)) {
-    $cfg['start']++;
-    $tmp = $row['uid'].'-'.$row['opr'].'-'.$row['usr'].'-'.$row['tst'];
-    if ($tmp !== $combi) {
-      $combi = $tmp;
-      $num++;
-      if ($num === $model->data['limit']) {
-        break;
-      }
-      else {
-        $res[$num] = $row;
-      }
+  //x::log(['BEFORE DATA', $timer->measure()]);
+  $rows = $model->db->rselect_all($cfg);
+  //x::log(['AFTER DATA', $timer->measure()]);
+  foreach ($rows as &$row) {
+    $row['tab_name'] = $history_cfg['tables'][$row['bbn_table']];
+    $cols = x::split($row['col'], ',');
+    $tmp = [];
+    foreach ($cols as $col) {
+      $tmp[] = $history_cfg['cols'][strtolower($col)];
     }
-    else if (!empty($res[$num])) {
-      $res[$num]['col_id'] .= ','.$row['col_id'];
-      $res[$num]['col_name'] .= ','.$row['col_name'];
-    }
+    $row['col_name'] = x::join($tmp, ', ');
   }
   $count_cfg = [
     'tables' => ['bbn_history'],
@@ -80,31 +75,22 @@ if ($model->has_data(['limit', 'start'])) {
           'field' => 'bbn_uid',
           'exp' => 'uid'
         ]]
-      ], [
-        'table' => 'bbn_options',
-        'alias' => 'ot',
-        'on' => [[
-          'field' => 'ot.id',
-          'exp' => 'bbn_table'
-        ]]
-      ], [
-        'table' => 'bbn_options',
-        'alias' => 'oc',
-        'on' => [[
-          'field' => 'oc.id',
-          'exp' => 'col'
-        ]]
       ]
     ]
   ];
   if (!empty($model->data['filters'])) {
     $count_cfg['where'] = $model->data['filters'];
   }
+  //x::log(['BEFORE COUNT', $timer->measure()]);
+  $count = $model->db->select_one($count_cfg);
+  //x::log(['AFTER COUNT', $timer->measure()]);
   $ret = [
-    'data' => $res,
-    'total' => $model->db->select_one($count_cfg),
+    'history' => $history_cfg['history'],
+    'data' => $rows,
+    'total' => $count,
     'success' => true,
     'error' => false
   ];
   return $ret;
 }
+return [];
