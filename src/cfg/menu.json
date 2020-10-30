@@ -1,13 +1,19 @@
 {
   "text": "History",
-  "icon": "nf nf-mdi-history",
-  "items": [{
-    "text": "UID find & delete",
-    "icon": "nf nf-fa-search",
-    "link": "uid_finder"
-  }, {
-    "text": "Full history list",
-    "icon": "nf nf-fa-list",
-    "link": "list"
-  }]
+  "num": 17,
+  "icon": "nf nf-mdi-clock",
+  "items": [
+    {
+      "text": "Uid find & delete",
+      "num": 1,
+      "icon": "nf nf-fa-search",
+      "link": "uid_finder"
+    },
+    {
+      "text": "Full history list",
+      "num": 2,
+      "icon": "nf nf-fa-list",
+      "link": "list"
+    }
+  ]
 }
