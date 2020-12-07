@@ -25,7 +25,7 @@
               <label>` + bbn._('Date') + `</label>
               <div v-text="fdatetime(m.dt)"></div>
               <template v-if="showValue">
-                <label>` + bbn._('Vallue') + `</label>
+                <label>` + bbn._('Value') + `</label>
                 <div>
                   <bbn-button @click="openDetails(m)"
                               icon="nf nf-fa-eye"
