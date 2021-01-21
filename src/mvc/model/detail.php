@@ -5,7 +5,7 @@ if ( !empty($model->data['uid']) &&
   ($cols = explode(',', $model->data['col'])) &&
   !empty($model->data['tst']) &&
   !empty($model->data['usr']) &&
-  ($dbc = new \bbn\appui\databases($model->db)) &&
+  ($dbc = new \bbn\appui\database($model->db)) &&
   ($table = $dbc->table_from_item($cols[0])) &&
   ($cfg = $model->db->modelize($table)) &&
   isset($cfg['keys']['PRIMARY']) &&

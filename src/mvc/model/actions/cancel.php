@@ -8,7 +8,7 @@ if (
   ($id_table = $model->db->select_one('bbn_history_uids', 'bbn_table', ['bbn_uid' => $model->data['uid']]))
 ){
   $table = $model->inc->options->code($id_table);
-  $dbc = new \bbn\appui\databases($model->db);
+  $dbc = new \bbn\appui\database($model->db);
   $m = $dbc->modelize($table);
   $h =& \bbn\appui\history::$column;
   $primary = $model->db->get_primary($table)[0];

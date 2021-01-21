@@ -5,7 +5,7 @@ $res = [
   'tables' => [],
   'columns' => []
 ];
-$dbc = new \bbn\appui\databases($model->db);
+$dbc = new \bbn\appui\database($model->db);
 foreach ( $dbc->tables() as $i => $table ){
   $res['tables'][] = ['value' => $table['id'], 'text' => $table['text']];
   foreach ( $dbc->columns($table['id']) as $id => $col ){
