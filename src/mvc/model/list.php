@@ -1,11 +1,11 @@
 <?php
-/** @var $model \bbn\mvc\model */
+/** @var $model \bbn\Mvc\Model */
 $res = [
   'root' => APPUI_HISTORY_ROOT,
   'tables' => [],
   'columns' => []
 ];
-$dbc = new \bbn\appui\database($model->db);
+$dbc = new \bbn\Appui\Database($model->db);
 foreach ( $dbc->tables() as $i => $table ){
   $res['tables'][] = ['value' => $table['id'], 'text' => $table['text']];
   foreach ( $dbc->columns($table['id']) as $id => $col ){

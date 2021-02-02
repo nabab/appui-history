@@ -1,7 +1,7 @@
 <?php
 $limit = isset($model->data['limit']) && is_int($model->data['limit']) ? $model->data['limit'] : 5;
 return [
-  'insert' => $model->db->rselect_all([
+  'insert' => $model->db->rselectAll([
     'table' => 'bbn_history',
     'fields' => [
       'bbn_history.uid',
@@ -52,7 +52,7 @@ return [
     ]],
     'limit' => $limit
   ]),
-  'update' => $model->db->rselect_all([
+  'update' => $model->db->rselectAll([
     'table' => 'bbn_history',
     'fields' => [
       'bbn_history.uid',
@@ -105,7 +105,7 @@ return [
     ]],
     'limit' => $limit
   ]),
-  'delete' => $model->db->rselect_all([
+  'delete' => $model->db->rselectAll([
     'table' => 'bbn_history',
     'fields' => [
       'bbn_history.uid',

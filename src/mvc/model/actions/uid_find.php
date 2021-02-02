@@ -4,7 +4,7 @@
  *
  **/
 
-/** @var $this \bbn\mvc\model*/
+/** @var $this \bbn\Mvc\Model*/
 if ( !empty($uid = $model->data['uid']) ){
   $success = false;
   $row = $model->db->rselect('bbn_history_uids', ['bbn_table', 'bbn_active'], ['bbn_uid' =>  $uid]);
@@ -13,7 +13,7 @@ if ( !empty($uid = $model->data['uid']) ){
   $active = $row['bbn_active'];
   
   $table_name = $model->inc->options->text($table);
-  if ( $opr = $model->db->rselect_all([
+  if ( $opr = $model->db->rselectAll([
     'table' => 'bbn_history',
     'fields' => [
       'col' => 'bbn_options.text', 

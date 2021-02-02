@@ -1,15 +1,15 @@
 <?php
-use bbn\x;
+use bbn\X;
 /**
- * @var bbn\mvc\model $model
+ * @var bbn\Mvc\Model $model
  */
-$timer = new \bbn\util\timer();
+$timer = new \bbn\Util\Timer();
 $timer->start();
 
-if ($model->has_data(['limit', 'start'])
-    && ($history_cfg = $model->get_model('history/config'))
+if ($model->hasData(['limit', 'start'])
+    && ($history_cfg = $model->getModel('history/config'))
 ) {
-  x::log(['ENTERING DATA', $timer->measure()]);
+  X::log(['ENTERING DATA', $timer->measure()]);
   $cfg = [
     'tables' => 'bbn_history',
     'fields' => [
@@ -54,16 +54,16 @@ if ($model->has_data(['limit', 'start'])
   $num = -1;
   $res = [];
   //x::log(['BEFORE DATA', $timer->measure()]);
-  $rows = $model->db->rselect_all($cfg);
+  $rows = $model->db->rselectAll($cfg);
   //x::log(['AFTER DATA', $timer->measure()]);
   foreach ($rows as &$row) {
     $row['tab_name'] = $history_cfg['tables'][$row['bbn_table']];
-    $cols = x::split($row['col'], ',');
+    $cols = X::split($row['col'], ',');
     $tmp = [];
     foreach ($cols as $col) {
       $tmp[] = $history_cfg['cols'][strtolower($col)];
     }
-    $row['col_name'] = x::join($tmp, ', ');
+    $row['col_name'] = X::join($tmp, ', ');
   }
   $count_cfg = [
     'tables' => ['bbn_history'],
@@ -82,7 +82,7 @@ if ($model->has_data(['limit', 'start'])
     $count_cfg['where'] = $model->data['filters'];
   }
   //x::log(['BEFORE COUNT', $timer->measure()]);
-  $count = $model->db->select_one($count_cfg);
+  $count = $model->db->selectOne($count_cfg);
   //x::log(['AFTER COUNT', $timer->measure()]);
   $ret = [
     'history' => $history_cfg['history'],

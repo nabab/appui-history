@@ -1,12 +1,12 @@
 <?php
-/** @var $model \bbn\mvc\model */
+/** @var $model \bbn\Mvc\Model */
 if ( !empty($model->data['uid']) &&
   !empty($model->data['col']) &&
   ($cols = explode(',', $model->data['col'])) &&
   !empty($model->data['tst']) &&
   !empty($model->data['usr']) &&
-  ($dbc = new \bbn\appui\database($model->db)) &&
-  ($table = $dbc->table_from_item($cols[0])) &&
+  ($dbc = new \bbn\Appui\Database($model->db)) &&
+  ($table = $dbc->tableFromItem($cols[0])) &&
   ($cfg = $model->db->modelize($table)) &&
   isset($cfg['keys']['PRIMARY']) &&
   (count($cfg['keys']['PRIMARY']['columns']) === 1)
@@ -17,7 +17,7 @@ if ( !empty($model->data['uid']) &&
       if ( $cfg['keys'][$column]['ref_table'] === 'bbn_options' ){
         $val = $model->inc->options->text($val);
       }
-      else if ( \bbn\str::is_json($val) ){
+      else if ( \bbn\Str::isJson($val) ){
 
       }
     }
@@ -31,7 +31,7 @@ if ( !empty($model->data['uid']) &&
       'usr' => $model->data['usr']
     ]);
     $column = $model->inc->options->text($col);
-    $new = \bbn\appui\history::get_val_back($table, $tmp['uid'], $tmp['tst'] + 1, $column);
+    $new = \bbn\Appui\History::getValBack($table, $tmp['uid'], $tmp['tst'] + 1, $column);
     $hist[] = [
       'column' => ucwords(str_replace('_', ' ', $column)),
       'before' => $fix_value($tmp['ref'] ?? $tmp['val'], $column),

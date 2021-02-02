@@ -5,16 +5,16 @@ if (
   !empty($model->data['usr']) &&
   !empty($model->data['col']) &&
   ($cols = explode(',', $model->data['col'])) &&
-  ($id_table = $model->db->select_one('bbn_history_uids', 'bbn_table', ['bbn_uid' => $model->data['uid']]))
+  ($id_table = $model->db->selectOne('bbn_history_uids', 'bbn_table', ['bbn_uid' => $model->data['uid']]))
 ){
   $table = $model->inc->options->code($id_table);
-  $dbc = new \bbn\appui\database($model->db);
+  $dbc = new \bbn\Appui\Database($model->db);
   $m = $dbc->modelize($table);
-  $h =& \bbn\appui\history::$column;
-  $primary = $model->db->get_primary($table)[0];
+  $h =& \bbn\Appui\History::$column;
+  $primary = $model->db->getPrimary($table)[0];
   $errors = [];
 
-  $rows = $model->db->rselect_all('bbn_history', [], [
+  $rows = $model->db->rselectAll('bbn_history', [], [
     'uid' => $model->data['uid'],
     'col' => $cols,
     'tst' => $model->data['tst'],
@@ -43,15 +43,15 @@ if (
         }
         break;
       case 'DELETE':
-        \bbn\appui\history::disable();
+        \bbn\Appui\History::disable();
         if ( $original = $model->db->rselect($table, [], [$primary => $model->data['uid']]) ){
-          \bbn\appui\history::enable();
+          \bbn\Appui\History::enable();
           if ( !$model->db->insert($table, $original) ){
             $errors[] = $hist;
           }
         }
         else {
-          \bbn\appui\history::enable();
+          \bbn\Appui\History::enable();
           $errors[] = $hist;
         }
         /* if ( !$model->db->update([

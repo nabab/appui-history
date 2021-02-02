@@ -4,8 +4,8 @@
  *
  **/
 
-/** @var $this \bbn\mvc\controller */
-/** @var \bbn\mvc\controller $ctrl */
+/** @var $this \bbn\Mvc\Controller */
+/** @var \bbn\Mvc\Controller $ctrl */
 if ( !\defined('APPUI_HISTORY_ROOT') ){
-  define('APPUI_HISTORY_ROOT', $ctrl->plugin_url('appui-history').'/');
+  define('APPUI_HISTORY_ROOT', $ctrl->pluginUrl('appui-history').'/');
 }

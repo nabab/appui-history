@@ -1,4 +1,4 @@
 <?php
-/** @var $ctrl \bbn\mvc\controller */
+/** @var $ctrl \bbn\Mvc\Controller */
 
-$ctrl->set_icon("nf nf-fa-search")->combo(_("History Uid Finder"), true);
+$ctrl->setIcon("nf nf-fa-search")->combo(_("History Uid Finder"), true);

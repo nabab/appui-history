@@ -1,8 +1,8 @@
 <?php
-use bbn\appui\history;
+use bbn\Appui\History;
 
-return $model->get_set_from_cache(function () use (&$model) {
-  $cfg = history::get_db_cfg();
+return $model->getSetFromCache(function () use (&$model) {
+  $cfg = History::getDbCfg();
   $tables = [];
   $cols = [];
   foreach ($cfg as $table => $o) {

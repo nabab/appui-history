@@ -1,7 +1,7 @@
 <?php
 if ( isset($ctrl->post['limit'], $ctrl->post['start']) ){
-  if ( $model = $ctrl->get_plugin_model('data/list', $ctrl->post) ){
-    $ctrl->obj = \bbn\x::to_object($model);
+  if ( $model = $ctrl->getPluginModel('data/list', $ctrl->post) ){
+    $ctrl->obj = \bbn\X::toObject($model);
   }
   else {
     $ctrl->action();
