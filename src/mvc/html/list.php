@@ -6,7 +6,7 @@
            :sortable="true"
            :filterable="true"
            :multifilter="true"
-           :order="[{field: 'tst', Dir: 'DESC'}]"
+           :order="[{field: 'tst', dir: 'DESC'}]"
            :showable="true"
 >
 	<bbns-column title="<?=_('UID')?>"
