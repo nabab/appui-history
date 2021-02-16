@@ -1,5 +1,8 @@
 {
-    "components\/widget\/changes\/last\/last": {
+    "components\/widget\/changes\/last": {
+        "Table": "Table",
+        "Column": "Colonne",
+        "User": "Utilisateur",
         "Date": "Date",
         "Value": "Valeur",
         "There is no data available": "Il n'y a pas de donn\u00e9es"
