@@ -108,8 +108,6 @@
                 "key": "MUL",
                 "extra": "'INSERT','UPDATE','DELETE','RESTORE'",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "default": "NULL",
                 "values": [
                     "INSERT",
@@ -123,10 +121,7 @@
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "maxlength": 16
             },
             "col": {
@@ -134,10 +129,7 @@
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "maxlength": 16
             },
             "val": {
@@ -145,10 +137,7 @@
                 "type": "longtext",
                 "null": 1,
                 "key": null,
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "default": "NULL"
             },
             "ref": {
@@ -156,10 +145,7 @@
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "default": "NULL",
                 "maxlength": 16
             },
@@ -168,10 +154,6 @@
                 "type": "decimal",
                 "null": 0,
                 "key": "MUL",
-                "extra": "",
-                "signed": false,
-                "virtual": false,
-                "generation": "",
                 "maxlength": 14,
                 "decimals": 4
             },
@@ -180,10 +162,7 @@
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "maxlength": 16
             },
             "dt": {
@@ -240,10 +219,7 @@
                 "type": "binary",
                 "null": 0,
                 "key": "PRI",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "maxlength": 16
             },
             "bbn_table": {
@@ -251,10 +227,7 @@
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "default": "NULL",
                 "maxlength": 16
             },
@@ -263,10 +236,7 @@
                 "type": "tinyint",
                 "null": 0,
                 "key": null,
-                "extra": "",
                 "signed": true,
-                "virtual": false,
-                "generation": "",
                 "default": 1,
                 "maxlength": 1
             }
