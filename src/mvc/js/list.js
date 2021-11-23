@@ -18,7 +18,7 @@
     },
     methods: {
       renderDate(r){
-        return moment(r.dt).format('DD/MM/YYYY HH:mm:ss');
+        return dayjs(r.dt).format('DD/MM/YYYY HH:mm:ss');
       },
       renderUser(r){
         return appui.app.getUserName(r.usr);
