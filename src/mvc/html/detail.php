@@ -11,6 +11,14 @@
 				<div class="bbn-spadded" v-text="item.column"></div>
 			</div>
 		</div>
+		<div class="bbn-flex-width">
+			<div class="bbn-header bbn-middle" style="width: 150px">
+				<h4><?=_("UID")?></h4>
+			</div>
+			<div class="bbn-flex-fill bbn-block bbn-vmiddle">
+				<div class="bbn-spadded" v-text="item.uid"></div>
+			</div>
+		</div>
 		<div v-if="item.showJSON"  class="bbn-flex-width">
 			<div class="bbn-header bbn-c" style="width: 150px">
 				<h4>JSON</h4>
@@ -65,5 +73,4 @@
 		</div>
 		<br v-if="source.items[i+1] !== undefined">
 	</div>
-	
 </bbn-scroll>
