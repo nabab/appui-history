@@ -102,7 +102,6 @@
         },
         "fields": {
             "opr": {
-                "position": 1,
                 "type": "enum",
                 "null": 1,
                 "key": "MUL",
@@ -117,7 +116,6 @@
                 ]
             },
             "uid": {
-                "position": 2,
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
@@ -125,7 +123,6 @@
                 "maxlength": 16
             },
             "col": {
-                "position": 3,
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
@@ -133,7 +130,6 @@
                 "maxlength": 16
             },
             "val": {
-                "position": 4,
                 "type": "longtext",
                 "null": 1,
                 "key": null,
@@ -141,7 +137,6 @@
                 "default": "NULL"
             },
             "ref": {
-                "position": 5,
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
@@ -150,7 +145,6 @@
                 "maxlength": 16
             },
             "tst": {
-                "position": 6,
                 "type": "decimal",
                 "null": 0,
                 "key": "MUL",
@@ -158,7 +152,6 @@
                 "decimals": 4
             },
             "usr": {
-                "position": 7,
                 "type": "binary",
                 "null": 0,
                 "key": "MUL",
@@ -166,7 +159,6 @@
                 "maxlength": 16
             },
             "dt": {
-                "position": 8,
                 "type": "datetime",
                 "null": 1,
                 "key": null,
@@ -215,7 +207,6 @@
         },
         "fields": {
             "bbn_uid": {
-                "position": 1,
                 "type": "binary",
                 "null": 0,
                 "key": "PRI",
@@ -223,7 +214,6 @@
                 "maxlength": 16
             },
             "bbn_table": {
-                "position": 2,
                 "type": "binary",
                 "null": 1,
                 "key": "MUL",
@@ -232,7 +222,6 @@
                 "maxlength": 16
             },
             "bbn_active": {
-                "position": 3,
                 "type": "tinyint",
                 "null": 0,
                 "key": null,
