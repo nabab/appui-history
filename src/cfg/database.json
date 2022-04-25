@@ -5,19 +5,12 @@
                 "columns": [
                     "uid"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             },
             "column": {
                 "columns": [
                     "col"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_options",
                 "ref_column": "id",
                 "constraint": "bbn_history_ibfk_1",
@@ -29,7 +22,6 @@
                 "columns": [
                     "usr"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_users",
                 "ref_column": "id",
                 "constraint": "bbn_history_ibfk_2",
@@ -41,7 +33,6 @@
                 "columns": [
                     "ref"
                 ],
-                "ref_db": null,
                 "ref_table": "bbn_history_uids",
                 "ref_column": "bbn_uid",
                 "constraint": "bbn_history_ibfk_3",
@@ -53,12 +44,6 @@
                 "columns": [
                     "tst"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             },
             "opr": {
@@ -68,12 +53,6 @@
                     "tst",
                     "usr"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             }
         },
@@ -176,24 +155,12 @@
                 "columns": [
                     "bbn_uid"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 1
             },
             "id_table": {
                 "columns": [
                     "bbn_table"
                 ],
-                "ref_db": null,
-                "ref_table": null,
-                "ref_column": null,
-                "constraint": null,
-                "update": null,
-                "delete": null,
                 "unique": 0
             }
         },
