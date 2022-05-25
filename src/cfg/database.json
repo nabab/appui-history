@@ -1,201 +1,203 @@
 {
-    "bbn_history": {
-        "keys": {
-            "line": {
-                "columns": [
-                    "uid"
-                ],
-                "unique": 0
-            },
-            "column": {
-                "columns": [
-                    "col"
-                ],
-                "ref_table": "bbn_options",
-                "ref_column": "id",
-                "constraint": "bbn_history_ibfk_1",
-                "update": "CASCADE",
-                "delete": "RESTRICT",
-                "unique": 0
-            },
-            "id_user": {
-                "columns": [
-                    "usr"
-                ],
-                "ref_table": "bbn_users",
-                "ref_column": "id",
-                "constraint": "bbn_history_ibfk_2",
-                "update": "CASCADE",
-                "delete": "CASCADE",
-                "unique": 0
-            },
-            "ref": {
-                "columns": [
-                    "ref"
-                ],
-                "ref_table": "bbn_history_uids",
-                "ref_column": "bbn_uid",
-                "constraint": "bbn_history_ibfk_3",
-                "update": "CASCADE",
-                "delete": "CASCADE",
-                "unique": 0
-            },
-            "tst": {
-                "columns": [
-                    "tst"
-                ],
-                "unique": 0
-            },
-            "opr": {
-                "columns": [
-                    "opr",
-                    "uid",
-                    "tst",
-                    "usr"
-                ],
-                "unique": 0
-            }
-        },
-        "cols": {
-            "uid": [
-                "line",
-                "opr"
-            ],
-            "col": [
-                "column"
-            ],
-            "usr": [
-                "id_user",
-                "opr"
-            ],
-            "ref": [
-                "ref"
-            ],
-            "tst": [
-                "tst",
-                "opr"
-            ],
-            "opr": [
-                "opr"
-            ]
-        },
-        "fields": {
-            "opr": {
-                "type": "enum",
-                "null": 1,
-                "key": "MUL",
-                "extra": "'INSERT','UPDATE','DELETE','RESTORE'",
-                "signed": true,
-                "default": "NULL",
-                "values": [
-                    "INSERT",
-                    "UPDATE",
-                    "DELETE",
-                    "RESTORE"
-                ]
-            },
-            "uid": {
-                "type": "binary",
-                "null": 0,
-                "key": "MUL",
-                "signed": true,
-                "maxlength": 16
-            },
-            "col": {
-                "type": "binary",
-                "null": 0,
-                "key": "MUL",
-                "signed": true,
-                "maxlength": 16
-            },
-            "val": {
-                "type": "longtext",
-                "null": 1,
-                "key": null,
-                "signed": true,
-                "default": "NULL"
-            },
-            "ref": {
-                "type": "binary",
-                "null": 1,
-                "key": "MUL",
-                "signed": true,
-                "default": "NULL",
-                "maxlength": 16
-            },
-            "tst": {
-                "type": "decimal",
-                "null": 0,
-                "key": "MUL",
-                "maxlength": 14,
-                "decimals": 4
-            },
-            "usr": {
-                "type": "binary",
-                "null": 0,
-                "key": "MUL",
-                "signed": true,
-                "maxlength": 16
-            },
-            "dt": {
-                "type": "datetime",
-                "null": 1,
-                "key": null,
-                "extra": "VIRTUAL GENERATED",
-                "signed": true,
-                "virtual": true,
-                "generation": "from_unixtime(`tst`)",
-                "default": "NULL"
-            }
-        }
+  "bbn_history": {
+    "keys": {
+      "line": {
+        "columns": [
+          "uid"
+        ],
+        "unique": 0
+      },
+      "column": {
+        "columns": [
+          "col"
+        ],
+        "ref_table": "bbn_options",
+        "ref_column": "id",
+        "constraint": "bbn_history_ibfk_1",
+        "update": "CASCADE",
+        "delete": "RESTRICT",
+        "unique": 0
+      },
+      "id_user": {
+        "columns": [
+          "usr"
+        ],
+        "ref_table": "bbn_users",
+        "ref_column": "id",
+        "constraint": "bbn_history_ibfk_2",
+        "update": "CASCADE",
+        "delete": "CASCADE",
+        "unique": 0
+      },
+      "ref": {
+        "columns": [
+          "ref"
+        ],
+        "ref_table": "bbn_history_uids",
+        "ref_column": "bbn_uid",
+        "constraint": "bbn_history_ibfk_3",
+        "update": "CASCADE",
+        "delete": "CASCADE",
+        "unique": 0
+      },
+      "tst": {
+        "columns": [
+          "tst"
+        ],
+        "unique": 0
+      },
+      "opr": {
+        "columns": [
+          "opr",
+          "uid",
+          "tst",
+          "usr"
+        ],
+        "unique": 0
+      }
     },
-    "bbn_history_uids": {
-        "keys": {
-            "PRIMARY": {
-                "columns": [
-                    "bbn_uid"
-                ],
-                "unique": 1
-            },
-            "id_table": {
-                "columns": [
-                    "bbn_table"
-                ],
-                "unique": 0
-            }
-        },
-        "cols": {
-            "bbn_uid": [
-                "PRIMARY"
-            ],
-            "bbn_table": [
-                "id_table"
-            ]
-        },
-        "fields": {
-            "bbn_uid": {
-                "type": "binary",
-                "null": 0,
-                "key": "PRI",
-                "signed": true,
-                "maxlength": 16
-            },
-            "bbn_table": {
-                "type": "binary",
-                "null": 1,
-                "key": "MUL",
-                "signed": true,
-                "default": "NULL",
-                "maxlength": 16
-            },
-            "bbn_active": {
-                "type": "tinyint",
-                "null": 0,
-                "key": null,
-                "signed": true,
-                "default": 1,
-                "maxlength": 1
-            }
-        }
+    "cols": {
+      "uid": [
+        "line",
+        "opr"
+      ],
+      "col": [
+        "column"
+      ],
+      "usr": [
+        "id_user",
+        "opr"
+      ],
+      "ref": [
+        "ref"
+      ],
+      "tst": [
+        "tst",
+        "opr"
+      ],
+      "opr": [
+        "opr"
+      ]
+    },
+    "fields": {
+      "opr": {
+        "type": "enum",
+        "null": 1,
+        "key": "MUL",
+        "extra": "'INSERT','UPDATE','DELETE','RESTORE'",
+        "signed": true,
+        "default": "NULL",
+        "values": [
+          "INSERT",
+          "UPDATE",
+          "DELETE",
+          "RESTORE"
+        ]
+      },
+      "uid": {
+        "type": "binary",
+        "null": 0,
+        "key": "MUL",
+        "signed": true,
+        "maxlength": 16
+      },
+      "col": {
+        "type": "binary",
+        "null": 0,
+        "key": "MUL",
+        "signed": true,
+        "maxlength": 16
+      },
+      "val": {
+        "type": "longtext",
+        "null": 1,
+        "key": null,
+        "signed": true,
+        "default": "NULL"
+      },
+      "ref": {
+        "type": "binary",
+        "null": 1,
+        "key": "MUL",
+        "signed": true,
+        "default": "NULL",
+        "defaultExpression": 1,
+        "maxlength": 16
+      },
+      "tst": {
+        "type": "decimal",
+        "null": 0,
+        "key": "MUL",
+        "maxlength": 14,
+        "decimals": 4
+      },
+      "usr": {
+        "type": "binary",
+        "null": 0,
+        "key": "MUL",
+        "signed": true,
+        "maxlength": 16
+      },
+      "dt": {
+        "type": "datetime",
+        "null": 1,
+        "key": null,
+        "extra": "VIRTUAL GENERATED",
+        "signed": true,
+        "virtual": true,
+        "generation": "from_unixtime(`tst`)",
+        "default": "NULL"
+      }
     }
+  },
+  "bbn_history_uids": {
+    "keys": {
+      "PRIMARY": {
+        "columns": [
+          "bbn_uid"
+        ],
+        "unique": 1
+      },
+      "id_table": {
+        "columns": [
+          "bbn_table"
+        ],
+        "unique": 0
+      }
+    },
+    "cols": {
+      "bbn_uid": [
+        "PRIMARY"
+      ],
+      "bbn_table": [
+        "id_table"
+      ]
+    },
+    "fields": {
+      "bbn_uid": {
+        "type": "binary",
+        "null": 0,
+        "key": "PRI",
+        "signed": true,
+        "maxlength": 16
+      },
+      "bbn_table": {
+        "type": "binary",
+        "null": 1,
+        "key": "MUL",
+        "signed": true,
+        "default": "NULL",
+        "defaultExpression": 1,
+        "maxlength": 16
+      },
+      "bbn_active": {
+        "type": "tinyint",
+        "null": 0,
+        "key": null,
+        "signed": true,
+        "default": 1,
+        "maxlength": 1
+      }
+    }
+  }
 }
