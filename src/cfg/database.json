@@ -109,11 +109,11 @@
         "maxlength": 16
       },
       "val": {
-        "type": "longtext",
+        "type": "json",
         "null": 1,
-        "key": null,
         "signed": true,
-        "default": "NULL"
+        "default": "NULL",
+        "defaultExpression": 1
       },
       "ref": {
         "type": "binary",
@@ -141,12 +141,12 @@
       "dt": {
         "type": "datetime",
         "null": 1,
-        "key": null,
         "extra": "VIRTUAL GENERATED",
         "signed": true,
         "virtual": true,
         "generation": "from_unixtime(`tst`)",
-        "default": "NULL"
+        "default": "NULL",
+        "defaultExpression": 1
       }
     }
   },
@@ -193,7 +193,6 @@
       "bbn_active": {
         "type": "tinyint",
         "null": 0,
-        "key": null,
         "signed": true,
         "default": 1,
         "maxlength": 1
