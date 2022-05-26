@@ -85,8 +85,8 @@
         "null": 1,
         "key": "MUL",
         "extra": "'INSERT','UPDATE','DELETE','RESTORE'",
-        "signed": true,
         "default": "NULL",
+        "defaultExpression": 1,
         "values": [
           "INSERT",
           "UPDATE",
@@ -98,20 +98,17 @@
         "type": "binary",
         "null": 0,
         "key": "MUL",
-        "signed": true,
         "maxlength": 16
       },
       "col": {
         "type": "binary",
         "null": 0,
         "key": "MUL",
-        "signed": true,
         "maxlength": 16
       },
       "val": {
         "type": "json",
         "null": 1,
-        "signed": true,
         "default": "NULL",
         "defaultExpression": 1
       },
@@ -119,7 +116,6 @@
         "type": "binary",
         "null": 1,
         "key": "MUL",
-        "signed": true,
         "default": "NULL",
         "defaultExpression": 1,
         "maxlength": 16
@@ -135,14 +131,12 @@
         "type": "binary",
         "null": 0,
         "key": "MUL",
-        "signed": true,
         "maxlength": 16
       },
       "dt": {
         "type": "datetime",
         "null": 1,
         "extra": "VIRTUAL GENERATED",
-        "signed": true,
         "virtual": true,
         "generation": "from_unixtime(`tst`)",
         "default": "NULL",
@@ -178,14 +172,12 @@
         "type": "binary",
         "null": 0,
         "key": "PRI",
-        "signed": true,
         "maxlength": 16
       },
       "bbn_table": {
         "type": "binary",
         "null": 1,
         "key": "MUL",
-        "signed": true,
         "default": "NULL",
         "defaultExpression": 1,
         "maxlength": 16
@@ -193,7 +185,7 @@
       "bbn_active": {
         "type": "tinyint",
         "null": 0,
-        "signed": true,
+        "signed": 0,
         "default": 1,
         "maxlength": 1
       }
