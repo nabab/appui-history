@@ -1,10 +1,9 @@
 <?php
 /** @var $model \bbn\Mvc\Model */
-if ( !empty($model->data['uid']) &&
-  !empty($model->data['col']) &&
+
+// Receiving everything obliges to have already info accessible and therefore granting access for all
+if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
   ($cols = explode(',', $model->data['col'])) &&
-  !empty($model->data['tst']) &&
-  !empty($model->data['usr']) &&
   ($dbc = new \bbn\Appui\Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
   ($cfg = $model->db->modelize($table)) &&
