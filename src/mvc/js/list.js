@@ -42,7 +42,7 @@
           icon: 'nf nf-fa-eye',
           text: bbn._('Seen'),
           notext: true,
-          disabled: (r.opr === 'DELETE') || (r.opr === 'RESTORE')
+          disabled: r.opr === 'RESTORE'
         }, {
           action: this.undo,
           icon: 'nf nf-fa-undo',
@@ -59,7 +59,6 @@
             tst: r.tst,
             usr: r.usr
           },
-          
           width: 700
         });
       },

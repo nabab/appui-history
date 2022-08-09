@@ -24,17 +24,20 @@
         });
       },
       getJSON(item) {
-        let bef = false,
-          aft = false
+        let isDelete = this.source.operation === 'DELETE',
+            bef = false,
+            aft = isDelete;
         try {
           bef = JSON.parse(item.before);
-          aft = JSON.parse(item.after);
+          if (!isDelete) {
+            aft = JSON.parse(item.after);
+          }
         }
-        catch (e) {
+        catch(e){
           return false;
         }
         if (bef && aft) {
-          return JSON.stringify(bbn.fn.diffObj(bef, aft));
+          return JSON.stringify(isDelete ? bef : bbn.fn.diffObj(bef, aft));
         }
       }
     },

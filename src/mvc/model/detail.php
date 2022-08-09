@@ -30,12 +30,37 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       'usr' => $model->data['usr']
     ]);
     $column = $model->inc->options->text($col);
-    $new = \bbn\Appui\History::getValBack($table, $tmp['uid'], $tmp['tst'] + 1, $column);
-    $hist[] = [
-      'column' => ucwords(str_replace('_', ' ', $column)),
-      'before' => $fix_value($tmp['ref'] ?? $tmp['val'], $column),
-      'after' => $fix_value($new, $column)
-    ];
+    if ($tmp['opr'] === 'DELETE') {
+      $fc = $model->db->cfn($column, $table);
+      $hist[] = [
+        'column' => ucwords(str_replace('_', ' ', $column)),
+        'before' => json_encode($model->db->select([
+          'table' => $table,
+          'fields' => [],
+          'join' => [[
+            'table' => 'bbn_history_uids',
+            'on' => [
+              'conditions' => [[
+                'field' => 'bbn_history_uids.bbn_uid',
+                'exp' => $fc
+              ]]
+            ]
+          ]],
+          'where' => [
+            $fc => $model->data['uid']
+          ]
+        ])),
+        'after' => ''
+      ];
+    }
+    else {
+      $new = \bbn\Appui\History::getValBack($table, $tmp['uid'], $tmp['tst'] + 1, $column);
+      $hist[] = [
+        'column' => ucwords(str_replace('_', ' ', $column)),
+        'before' => $fix_value($tmp['ref'] ?? $tmp['val'], $column),
+        'after' => $fix_value($new, $column)
+      ];
+    }
   }
   if ( !empty($hist) ){
     return [
