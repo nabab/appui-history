@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: info@bbn.so\n"
+"last-Translator: BBN Solutions <support@bbn.solutions>\n"
+"Language-Team: EN <EN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-10 15:41+0100\n"
+"POT-Revision-Date: 2023-02-10 15:41+0100\n"
+"Language: en\n"
+"X-Domain: appui-history47\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "The entry has been"
+msgstr "The entry has been"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "created"
+msgstr "Created"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "modified"
+msgstr "Modified"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "deleted"
+msgstr "Deleted"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "restored"
+msgstr "restored"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.js
+msgid "by"
+msgstr "by"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.php
+msgid "Field"
+msgstr "Field"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.php
+msgid "Before"
+msgstr "Before"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.php
+msgid "After"
+msgstr "After"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/detail/detail.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "UID"
+msgstr "UID"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
+msgid "Table"
+msgstr "Table"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "Column"
+msgstr "Column"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "User"
+msgstr "User"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+msgid "Date"
+msgstr "Date"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+msgid "Value"
+msgstr "Value"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.js
+msgid "There is no data available"
+msgstr "There is no data available"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.php
+msgid "INSERT"
+msgstr "Insert"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.php
+msgid "UPDATE"
+msgstr "Update"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/components/widget/changes/last/last.php
+msgid "DELETE"
+msgstr "Delete"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "Date & Time"
+msgstr "Date & Time"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/list.php
+msgid "Operation"
+msgstr "Operation"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
+msgid "Type an uid"
+msgstr "Type an uid"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
+msgid "Search uid"
+msgstr "Search uid"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
+msgid "Active"
+msgstr "Active"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/html/uid_finder.php
+msgid "Operation(s)"
+msgstr "Operation(s)"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "Seen"
+msgstr "Seen"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "Cancel"
+msgstr "Cancel"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "delete this record"
+msgstr "delete this record"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "go back to the previous value"
+msgstr "go back to the previous value"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "restore this record"
+msgstr "restore this record"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "delete this record again"
+msgstr "delete this record again"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "Do you really want to"
+msgstr "Do you really want to"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "This didn't work..."
+msgstr "This didn't work..."
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/list.js
+msgid "Thanks to create a bug with the UID you couldn't cancel"
+msgstr "Thanks to create a bug with the UID you couldn't cancel"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Are you sure you want to remove all?"
+msgstr "Are you sure you want to remove all?"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Entries successfully removed from db"
+msgstr "Entries successfully removed from db"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Something went wrong while deleting all"
+msgstr "Something went wrong while deleting all"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Are you sure you want to delete this entry from bbn_history?"
+msgstr "Are you sure you want to delete this entry from bbn_history?"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Entry successfully deleted from bbn_history"
+msgstr "Entry successfully deleted from bbn_history"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Something went wrong while deleting this entry"
+msgstr "Something went wrong while deleting this entry"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Check the inserted uid"
+msgstr "Check the inserted uid"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Uid not found"
+msgstr "uid not found"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/js/uid_finder.js
+msgid "Insert an uid before to search"
+msgstr "Insert an uid before to search"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/public/detail.php
+msgid "History line"
+msgstr "History line"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/public/list.php
+msgid "History of use"
+msgstr "History of use"
+
+#: /home/okrim/_COMPOSER/dev/vendor/bbn/appui-history/src/mvc/public/uid_finder.php
+msgid "History Uid Finder"
+msgstr "History Uid Finder"
