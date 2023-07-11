@@ -51,7 +51,7 @@
         }];
       },
       seen(r){
-        bbn.vue.closest(this, 'bbns-container').popup().load({
+        this.closest('bbn-container').popup().load({
           url: this.source.root + 'detail',
           data: {
             uid: r.uid,
