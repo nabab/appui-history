@@ -9,7 +9,7 @@
 	<div v-for="(item, i) of items">
 		<div class="bbn-flex-width">
 			<div class="bbn-header bbn-middle" style="width: 150px">
-				<h4><?=_("Field")?></h4>
+				<h4><?= _("Field") ?></h4>
 			</div>
 			<div class="bbn-flex-fill bbn-block bbn-vmiddle">
 				<div class="bbn-spadded" v-text="item.column"></div>
@@ -42,7 +42,7 @@
 			</div>
 			<div v-if="showBefore" class="bbn-flex-width">
 				<div class="bbn-header bbn-middle" style="width: 150px">
-					<h4><?=_("Before")?></h4>
+					<h4><?= _("Before") ?></h4>
 				</div>
 				<div class="bbn-flex-fill bbn-block bbn-vmiddle">
 					<div class="bbn-spadded"
@@ -53,7 +53,7 @@
 			</div>
 			<div class="bbn-flex-width">
 				<div class="bbn-header bbn-middle" style="width: 150px">
-					<h4><?=_("After")?></h4>
+					<h4><?= _("After") ?></h4>
 				</div>
 				<div class="bbn-flex-fill bbn-block bbn-vmiddle">
 					<div class="bbn-spadded"

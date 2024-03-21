@@ -1,12 +1,12 @@
 <div class="bbn-padded bbn-w-100">
   <bbn-panelbar :source="[{
-                  header: '<?=_('INSERT')?>',
+                  header: '<?= _('INSERT') ?>',
                   component: $options.components.list,
                   componentOptions: {
                     source: source.insert
                   }
                 }, {
-                  header: '<?=_('UPDATE')?>',
+                  header: '<?= _('UPDATE') ?>',
                   component: $options.components.list,
                   componentOptions: {
                     source: source.update,
@@ -14,7 +14,7 @@
                     showValue: true
                   }
                 }, {
-                  header: '<?=_('DELETE')?>',
+                  header: '<?= _('DELETE') ?>',
                   component: $options.components.list,
                   componentOptions: {
                     source: source.delete

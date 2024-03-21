@@ -1,5 +1,5 @@
 <div class="bbn-lpadded bbn-grid-fields">
-  <bbn-input placeholder="<?=_('Type an uid')?>"
+  <bbn-input placeholder="<?= _('Type an uid') ?>"
              v-model="uid"
              @keydown.enter="searchUid"
   ></bbn-input>
@@ -8,7 +8,7 @@
               class="bbn-small"
               :notext="true"
               @click="searchUid"
-              title="<?=_("Search uid")?>"
+              title="<?= _("Search uid") ?>"
               style="margin-top:2px"
   ></bbn-button>  
   </div>
@@ -16,23 +16,23 @@
 <div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
 >
   <div v-if="table.length">
-    <?=_('Table')?>:
+    <?= _('Table') ?>:
   </div>
   <div v-text="table ? table : ''">
   </div>
 </div>
 <div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
 >
-  <div v-if="table"><?=_('Active')?>:
+  <div v-if="table"><?= _('Active') ?>:
   </div>
   <div v-if="table">
   	<div v-text="active" style="display:inline">
   	</div>
     <bbn-button icon="nf nf-fa-trash_alt"
                 class="bbn-small"
-                text="<?=("Delete completely from db?")?>"
+                text="<?= ("Delete completely from db?") ?>"
                 @click="removeAll"
-                title="<?=("Delete completely from db?")?>"
+                title="<?= ("Delete completely from db?") ?>"
                 style="margin-left:1rem"
    	></bbn-button>
   </div>
@@ -43,7 +43,7 @@
        class="bbn-large"
        :title="(opr.length === 1) ? opr.length +' operation' : opr.length +' operations'"
   >
-     <?=_('Operation(s)')?>:
+     <?= _('Operation(s)') ?>:
  	</div>
   <div style="position:relative; height:650px" class="list-container">
     <bbn-scroll>
