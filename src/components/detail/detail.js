@@ -57,7 +57,7 @@
           this.message += bbn._("restored");
           break;
       }
-      this.message += ' ' + bbn._("by") + ' ' + appui.app.getUserName(this.source.id_user);
+      this.message += ' ' + bbn._("by") + ' ' + appui.getUserName(this.source.id_user);
     }
   }
 })();

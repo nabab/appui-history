@@ -3,7 +3,7 @@
     methods: {
       fdatetime: bbn.fn.fdatetime,
       user(user){
-        return bbn.fn.getField(appui.app.users, 'text', 'value', user);
+        return bbn.fn.getField(appui.users, 'text', 'value', user);
       }
     },
     components: {
@@ -58,7 +58,7 @@
         methods: {
           fdatetime: bbn.fn.fdatetime,
           user(user){
-            return bbn.fn.getField(appui.app.users, 'text', 'value', user);
+            return bbn.fn.getField(appui.users, 'text', 'value', user);
           },
           openDetails(r){
             this.getPopup().load({

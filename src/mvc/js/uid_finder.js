@@ -50,7 +50,7 @@
         return bbn.fn.fdate(date)
       },
       username(usr){
-        return appui.app.getUserName(usr)
+        return appui.getUserName(usr)
       },
       searchUid(){
         if ( this.uid.indexOf('0x') > -1 ){

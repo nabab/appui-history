@@ -5,7 +5,7 @@
     props: ['source'],
     data(){
       return {
-        users: bbn.fn.order(appui.app.users, 'text', 'ASC')
+        users: bbn.fn.order(appui.users, 'text', 'ASC')
       }
     },
     computed: {
@@ -21,7 +21,7 @@
         return dayjs(r.dt).format('DD/MM/YYYY HH:mm:ss');
       },
       renderUser(r){
-        return appui.app.getUserName(r.usr);
+        return appui.getUserName(r.usr);
       },
       renderOperation(r){
         return '<span class="' + r.opr.toLowerCase() + '">' + r.opr + '</span>';
