@@ -1,5 +1,5 @@
 <?php
-/** @var $model \bbn\Mvc\Model */
+/** @var bbn\Mvc\Model $model */
 $res = [
   'root' => APPUI_HISTORY_ROOT,
   'tables' => [],

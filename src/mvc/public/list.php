@@ -1,5 +1,5 @@
 <?php
-/** @var $ctrl \bbn\Mvc\Controller */
+/** @var bbn\Mvc\Controller $ctrl */
 
 $d = $ctrl->getPluginModel('list', $ctrl->data);
 if ( is_null($d) ){

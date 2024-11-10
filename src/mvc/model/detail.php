@@ -1,5 +1,5 @@
 <?php
-/** @var $model \bbn\Mvc\Model */
+/** @var bbn\Mvc\Model $model */
 
 // Receiving everything obliges to have already info accessible and therefore granting access for all
 if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
