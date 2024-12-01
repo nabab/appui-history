@@ -12,7 +12,7 @@
         <div class="bbn-background">
           <div v-if="source.length" class="bbn-w-100">
             <div v-for="m in source"
-                class="bbn-padded bbn-grid-fields"
+                class="bbn-padding bbn-grid-fields"
             >
               <label>` + bbn._('Table') + `</label>
               <div v-text="m.table"></div>
@@ -34,7 +34,7 @@
               </template>
             </div>
           </div>
-          <div v-else class="bbn-padded bbn-c bbn-w-100">` + bbn._('There is no data available') + `</div>
+          <div v-else class="bbn-padding bbn-c bbn-w-100">` + bbn._('There is no data available') + `</div>
         </div>
         `,
         props: {

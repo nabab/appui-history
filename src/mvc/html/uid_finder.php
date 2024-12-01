@@ -1,4 +1,4 @@
-<div class="bbn-lpadded bbn-grid-fields">
+<div class="bbn-lpadding bbn-grid-fields">
   <bbn-input placeholder="<?= _('Type an uid') ?>"
              v-model="uid"
              @keydown.enter="searchUid"
@@ -13,7 +13,7 @@
   ></bbn-button>  
   </div>
 </div>
-<div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
+<div class="bbn-vspadding bbn-hlpadding bbn-large bbn-grid-fields"
 >
   <div v-if="table.length">
     <?= _('Table') ?>:
@@ -21,7 +21,7 @@
   <div v-text="table ? table : ''">
   </div>
 </div>
-<div class="bbn-vspadded bbn-hlpadded bbn-large bbn-grid-fields"
+<div class="bbn-vspadding bbn-hlpadding bbn-large bbn-grid-fields"
 >
   <div v-if="table"><?= _('Active') ?>:
   </div>
@@ -38,7 +38,7 @@
   </div>
   
 </div>
-<div class="bbn-vspadded bbn-hlpadded bbn-grid-fields">
+<div class="bbn-vspadding bbn-hlpadding bbn-grid-fields">
   <div v-if="opr.length" 
        class="bbn-large"
        :title="(opr.length === 1) ? opr.length +' operation' : opr.length +' operations'"

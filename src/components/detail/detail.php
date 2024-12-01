@@ -12,7 +12,7 @@
 				<h4><?= _("Field") ?></h4>
 			</div>
 			<div class="bbn-flex-fill bbn-block bbn-vmiddle">
-				<div class="bbn-spadded" v-text="item.column"></div>
+				<div class="bbn-spadding" v-text="item.column"></div>
 			</div>
 		</div>
 		<div v-if="item.showJSON"  class="bbn-flex-width">
@@ -45,7 +45,7 @@
 					<h4><?= _("Before") ?></h4>
 				</div>
 				<div class="bbn-flex-fill bbn-block bbn-vmiddle">
-					<div class="bbn-spadded"
+					<div class="bbn-spadding"
 							v-text="item.before === null ? 'NULL' : item.before"
 							style="word-break: break-all; max-width: 500px"
 					></div>
@@ -56,7 +56,7 @@
 					<h4><?= _("After") ?></h4>
 				</div>
 				<div class="bbn-flex-fill bbn-block bbn-vmiddle">
-					<div class="bbn-spadded"
+					<div class="bbn-spadding"
 							v-text="item.after === null ? 'NULL' : item.after"
 							style="word-break: break-all; max-width: 500px"
 					></div>

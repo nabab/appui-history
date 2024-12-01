@@ -1,4 +1,4 @@
-<div class="bbn-padded bbn-w-100">
+<div class="bbn-padding bbn-w-100">
   <bbn-panelbar :source="[{
                   header: '<?= _('INSERT') ?>',
                   component: $options.components.list,
