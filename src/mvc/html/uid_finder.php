@@ -30,7 +30,7 @@
   	</div>
     <bbn-button icon="nf nf-fa-trash_alt"
                 class="bbn-small"
-                text="<?= ("Delete completely from db?") ?>"
+                label="<?= ("Delete completely from db?") ?>"
                 @click="removeAll"
                 title="<?= ("Delete completely from db?") ?>"
                 style="margin-left:1rem"
