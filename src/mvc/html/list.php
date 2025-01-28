@@ -12,7 +12,7 @@
 	<bbns-column label="<?= _('UID') ?>"
               field="uid"
               :width="260"
-              :hidden="true"
+              :invisible="true"
   ></bbns-column>
 	<bbns-column field="usr"
               label="<?= _('User') ?>"
