@@ -10,31 +10,29 @@
       list: {
         template: `
         <div class="bbn-background">
-          <div v-if="source.length" class="bbn-w-100">
-            <div v-for="m in source"
-                class="bbn-padding bbn-grid-fields"
-            >
+          <div bbn-if="source?.length" class="bbn-w-100">
+            <div bbn-for="m in source"
+                class="bbn-padding bbn-grid-fields">
               <label>` + bbn._('Table') + `</label>
-              <div v-text="m.table"></div>
-              <template v-if="showColumn">
+              <div bbn-text="m.table"/>
+              <template bbn-if="showColumn">
                 <label>` + bbn._('Column') + `</label>
-                <div v-text="m.column"></div>
+                <div bbn-text="m.column"/>
               </template>
               <label>` + bbn._('User') + `</label>
-              <div v-text="user(m.usr)"></div>
+              <div bbn-text="user(m.usr)"/>
               <label>` + bbn._('Date') + `</label>
-              <div v-text="fdatetime(m.dt)"></div>
-              <template v-if="showValue">
+              <div bbn-text="fdatetime(m.dt)"/>
+              <template bbn-if="showValue">
                 <label>` + bbn._('Value') + `</label>
                 <div>
                   <bbn-button @click="openDetails(m)"
-                              icon="nf nf-fa-eye"
-                  ></bbn-button>
+                              icon="nf nf-fa-eye"/>
                 </div>
               </template>
             </div>
           </div>
-          <div v-else class="bbn-padding bbn-c bbn-w-100">` + bbn._('There is no data available') + `</div>
+          <div bbn-else class="bbn-padding bbn-c bbn-w-100">` + bbn._('There is no data available') + `</div>
         </div>
         `,
         props: {
