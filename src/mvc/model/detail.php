@@ -1,4 +1,7 @@
 <?php
+
+use bbn\X;
+
 /** @var bbn\Mvc\Model $model */
 
 // Receiving everything obliges to have already info accessible and therefore granting access for all
@@ -6,13 +9,14 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
   ($cols = explode(',', $model->data['col'])) &&
   ($dbc = new \bbn\Appui\Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
-  ($cfg = $model->db->modelize($table)) &&
+  ($cfg = $dbc->modelize($table)) &&
   isset($cfg['keys']['PRIMARY']) &&
   (count($cfg['keys']['PRIMARY']['columns']) === 1)
 ){
+  //X::ddump($cfg);
   $hist = [];
   $fix_value = function($val, $column) use($cfg, $model){
-    if ( isset($cfg['keys'][$column]) && !empty($cfg['keys'][$column]['ref_column']) ){
+    if (isset($cfg['keys'][$column]) && !empty($cfg['keys'][$column]['ref_column'])) {
       if ( $cfg['keys'][$column]['ref_table'] === 'bbn_options' ){
         $val = $model->inc->options->text($val);
       }
@@ -67,7 +71,9 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       'root' => APPUI_HISTORY_ROOT,
       'uid' => $model->data['uid'],
       'operation' => $tmp['opr'],
+      'option' => $cfg['option'],
       'table' => $table,
+      'data' => $model->db->rselect($table, [], [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']]),
       'id_user' => $model->data['usr'],
       'items' => $hist
     ];

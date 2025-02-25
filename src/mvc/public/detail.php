@@ -1,12 +1,13 @@
 <?php
 /* @var $ctrl \bbn\Mvc\Controller */
 if ( !empty($ctrl->post['uid']) && !empty($ctrl->post['col']) && !empty($ctrl->post['tst']) ){
-  $d = $ctrl->getPluginModel('detail', $ctrl->post);
+  $d = null;//$ctrl->getPluginModel('detail', $ctrl->post);
   if ( is_null($d) ){
     $d = $ctrl->getModel($ctrl->post);
   }
+  bbn\X::ddump($d);
   $ctrl->setTitle($d['title'] ?? _("History line"));
-  $views = $ctrl->getPluginViews('detail', $d);
+  $views = ['html' => '', 'js' => '', 'css' => ''];//$ctrl->getPluginViews('detail', $d);
   $ctrl->obj->data = $d;
   echo $views['html'] ?: $ctrl->getView();
   $ctrl->addScript($views['js'] ?: $ctrl->getView('', 'js'));
