@@ -33,7 +33,7 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       'tst' => $model->data['tst'],
       'usr' => $model->data['usr']
     ]);
-    $column = $model->inc->options->text($col);
+    $column = $model->inc->options->code($col);
     if ($tmp['opr'] === 'DELETE') {
       $fc = $model->db->cfn($column, $table);
       $hist[] = [
