@@ -1,11 +1,9 @@
 <!-- HTML Document -->
 
 <div class="appui-history-detail bbn-w-100">
-	<div class="bbn-c">
-    <h3 v-text="_('UID') + ': ' + source.uid"/>
-		<h4 v-if="message"
-        v-text="message"/>
-	</div>
+  <h4 v-if="message"
+      v-text="message"
+      class="bbn-c"/>
 	<div v-for="(item, i) of items">
 		<div class="bbn-flex-width">
 			<div class="bbn-header bbn-middle" style="width: 150px">
@@ -29,7 +27,7 @@
 			</div>
 		</div>
 		<div v-else>
-			<div v-if="!!item.json" class="bbn-flex-width">
+			<div v-if="item.json" class="bbn-flex-width">
 				<div class="bbn-header bbn-middle" style="width: 150px">
 					<h4>JSON</h4>
 				</div>

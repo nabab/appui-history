@@ -1,13 +1,16 @@
 <?php
 
 use bbn\X;
+use bbn\Str;
+use bbn\Appui\Database;
+use bbn\Appui\History;
 
 /** @var bbn\Mvc\Model $model */
 
 // Receiving everything obliges to have already info accessible and therefore granting access for all
 if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
   ($cols = explode(',', $model->data['col'])) &&
-  ($dbc = new \bbn\Appui\Database($model->db)) &&
+  ($dbc = new Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
   ($cfg = $dbc->modelize($table)) &&
   isset($cfg['keys']['PRIMARY']) &&
@@ -20,7 +23,7 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       if ( $cfg['keys'][$column]['ref_table'] === 'bbn_options' ){
         $val = $model->inc->options->text($val);
       }
-      else if ( \bbn\Str::isJson($val) ){
+      elseif (Str::isJson($val)) {
 
       }
     }
@@ -66,14 +69,13 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       ];
     }
   }
-  if ( !empty($hist) ){
+  if (!empty($hist)) {
     return [
       'root' => APPUI_HISTORY_ROOT,
       'uid' => $model->data['uid'],
       'operation' => $tmp['opr'],
       'option' => $cfg['option'],
       'table' => $table,
-      'data' => $model->db->rselect($table, [], [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']]),
       'id_user' => $model->data['usr'],
       'items' => $hist
     ];

@@ -12,7 +12,7 @@
         });
       }
       return {
-        message: bbn._("The entry has been") + ' ',
+        message: bbn._("The entry in the table %s has been", this.source.table) + ' ',
         showBefore: false,
         items: items
       }
@@ -44,17 +44,17 @@
     mounted(){
       switch ( this.source.operation ){
         case 'INSERT':
-          this.message += bbn._("created");
+          this.message += bbn._("created").toLowerCase();
           break;
         case 'UPDATE':
-          this.message += bbn._("modified");
+          this.message += bbn._("modified").toLowerCase();
           this.showBefore = true;
           break;
         case 'DELETE':
-          this.message += bbn._("deleted");
+          this.message += bbn._("deleted").toLowerCase();
           break;
         case 'RESTORE':
-          this.message += bbn._("restored");
+          this.message += bbn._("restored").toLowerCase();
           break;
       }
       this.message += ' ' + bbn._("by") + ' ' + appui.getUserName(this.source.id_user);
