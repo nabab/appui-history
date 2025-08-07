@@ -11,7 +11,7 @@ if ($model->hasData(['limit', 'start'])
 ) {
   X::log(['ENTERING DATA', $timer->measure()]);
   $cfg = [
-    'tables' => 'bbn_history',
+    'table' => 'bbn_history',
     'fields' => [
       'uid',
       'tst',
