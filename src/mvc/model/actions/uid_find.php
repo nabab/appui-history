@@ -1,10 +1,6 @@
 <?php
-/*
- * Describe what it does!
- *
- **/
 
-/** @var $this \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 if ( !empty($uid = $model->data['uid']) ){
   $success = false;
   $row = $model->db->rselect('bbn_history_uids', ['bbn_table', 'bbn_active'], ['bbn_uid' =>  $uid]);

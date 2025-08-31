@@ -1,10 +1,6 @@
 <?php
-/*
- * Describe what it does!
- *
- **/
 
-/** @var $this \bbn\Mvc\Model*/
+/** @var bbn\Mvc\Model $model */
 //bbn\Appui\History::disable();
 
 if ( !empty($entry = $model->data['entry']) && !empty($model->data['uid']) ){
