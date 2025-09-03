@@ -138,7 +138,8 @@
           // Sending everything obliges to have already info accessible and therefore granting access for all
           data: {
             uid: row.uid,
-            col: row.col
+            col: row.col,
+            dt: row.dt
           },
           maximizable: true
         });
