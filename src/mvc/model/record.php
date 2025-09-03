@@ -13,16 +13,20 @@ if ($model->hasData(['uid', 'col'], true) &&
   ($dbc = new Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
   ($cfg = $dbc->modelize($table))
-){
-  $displayCfg = $dbc->getDisplayConfig($table);
-  //X::ddump($displayCfg, $table);
-  
-  History::disable();
+) {
+  if ($hasHistory = History::isEnabled()) {
+    History::disable();
+  }
+
+  $when = $model->hasData('dt', true) ? date('Y-m-d H:i:s', (Str::isNumber($model->data['dt']) ? $model->data['dt'] : strtotime($model->data['dt'])) + 1) : null;
   $res = [
     'root' => APPUI_HISTORY_ROOT,
     'table' => $table,
-    'data' => $dbc->getDisplayRecord($table, $displayCfg, [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']])
+    'data' => $dbc->getDisplayRecord($table, $dbc->getDisplayConfig($table), [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']], $when),
   ];
-  History::enable();
+  if ($hasHistory) {
+    History::enable();
+  }
+
   return $res;
 }
