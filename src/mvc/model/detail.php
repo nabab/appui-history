@@ -61,7 +61,7 @@ if ($model->hasData(['uid', 'col', 'tst', 'usr'], true) &&
       ];
     }
     else {
-      $new = \bbn\Appui\History::getValBack($table, $tmp['uid'], $tmp['tst'] + 1, $column);
+      $new = History::getValBack($table, $tmp['uid'], $tmp['tst'] + 1, $column);
       $hist[] = [
         'column' => ucwords(str_replace('_', ' ', $column)),
         'before' => $fix_value($tmp['ref'] ?? $tmp['val'], $column),

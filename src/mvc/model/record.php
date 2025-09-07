@@ -8,7 +8,7 @@ use bbn\Appui\History;
 /** @var bbn\Mvc\Model $model */
 
 // Receiving everything obliges to have already info accessible and therefore granting access for all
-if ($model->hasData(['uid', 'col'], true) &&
+if ($model->hasData(['uid', 'col', 'opr', 'tst'], true) &&
   ($cols = explode(',', $model->data['col'])) &&
   ($dbc = new Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
@@ -18,11 +18,35 @@ if ($model->hasData(['uid', 'col'], true) &&
     History::disable();
   }
 
-  $when = $model->hasData('dt', true) ? date('Y-m-d H:i:s', (Str::isNumber($model->data['dt']) ? $model->data['dt'] : strtotime($model->data['dt'])) + 1) : null;
+  $cfg['fields'] = array_map(
+    function($a, $k) {
+      $a['name'] = $k;
+      return $a;
+    },
+    array_values($cfg['fields']),
+    array_keys($cfg['fields'])
+  );
+
+  $changes = [];
+  if ($model->data['opr'] === 'UPDATE') {
+    foreach ($cols as $c) {
+      $col = X::getField($cfg['fields'], ['id_option' => $c], 'name');
+      $changes[$col] = History::getValBack($table, $model->data['uid'], $model->data['tst'] - 1, $col);
+    }
+  }
+
+
+
   $res = [
-    'root' => APPUI_HISTORY_ROOT,
+    'root' => constant('APPUI_HISTORY_ROOT'),
     'table' => $table,
-    'data' => $dbc->getDisplayRecord($table, $dbc->getDisplayConfig($table), [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']], $when),
+    'data' => $dbc->getDisplayRecord(
+      $table,
+      $dbc->getDisplayConfig($table),
+      [$cfg['keys']['PRIMARY']['columns'][0] => $model->data['uid']],
+      $model->data['tst'],
+      $changes
+    )
   ];
   if ($hasHistory) {
     History::enable();
