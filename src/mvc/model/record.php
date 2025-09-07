@@ -8,7 +8,7 @@ use bbn\Appui\History;
 /** @var bbn\Mvc\Model $model */
 
 // Receiving everything obliges to have already info accessible and therefore granting access for all
-if ($model->hasData(['uid', 'col', 'opr', 'tst'], true) &&
+if ($model->hasData(['uid', 'col', 'opr', 'tst', 'usr'], true) &&
   ($cols = explode(',', $model->data['col'])) &&
   ($dbc = new Database($model->db)) &&
   ($table = $dbc->tableFromItem($cols[0])) &&
@@ -40,6 +40,9 @@ if ($model->hasData(['uid', 'col', 'opr', 'tst'], true) &&
   $res = [
     'root' => constant('APPUI_HISTORY_ROOT'),
     'table' => $table,
+    'opr' => $model->data['opr'],
+    'tst' => $model->data['tst'], 
+    'usr' => $model->data['usr'],
     'data' => $dbc->getDisplayRecord(
       $table,
       $dbc->getDisplayConfig($table),
