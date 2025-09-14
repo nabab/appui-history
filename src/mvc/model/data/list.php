@@ -1,9 +1,11 @@
 <?php
 use bbn\X;
+use bbn\Appui\Grid;
+use bbn\Util\Timer;
 /**
  * @var bbn\Mvc\Model $model
  */
-$timer = new \bbn\Util\Timer();
+$timer = new Timer();
 $timer->start();
 
 if ($model->hasData(['limit', 'start'])
@@ -30,11 +32,11 @@ if ($model->hasData(['limit', 'start'])
         ]]
       ]
     ],
-    'start' => $model->data['start'],
-    'limit' => $model->data['limit'],
+    'limit' => 50,
     'order' => [
       'tst' => 'DESC'
     ],
+    'total' => false,
     'group_by' => [
       'tst',
       'uid',
@@ -42,21 +44,12 @@ if ($model->hasData(['limit', 'start'])
       'opr'
     ]
   ];
-  if (!empty($model->data['filters'])) {
-    $cfg['where'] = $model->data['filters'];
-  }
-  if (!empty($model->data['order'])) {
-    $cfg['order'] = $model->data['order'];
-  }
-  $tot = 0;
-  $start = $model->data['start'];
-  $combi = null;
-  $num = -1;
-  $res = [];
-  //x::log(['BEFORE DATA', $timer->measure()]);
-  $rows = $model->db->rselectAll($cfg);
-  //x::log(['AFTER DATA', $timer->measure()]);
-  foreach ($rows as &$row) {
+
+  $grid = new Grid($model->db, $model->data, $cfg);
+  $ret = $grid->getDatatable();
+  $ret['success'] = true;
+  $ret['history'] = $history_cfg['history'];
+  foreach ($ret['data'] as &$row) {
     $row['tab_name'] = $history_cfg['tables'][$row['bbn_table']];
     $cols = X::split($row['col'], ',');
     $tmp = [];
@@ -65,32 +58,8 @@ if ($model->hasData(['limit', 'start'])
     }
     $row['col_name'] = X::join($tmp, ', ');
   }
-  $count_cfg = [
-    'tables' => ['bbn_history'],
-    'fields' => ['COUNT(DISTINCT uid, usr, tst, opr)'],
-    'join' => [
-      [
-        'table' => 'bbn_history_uids',
-        'on' => [[
-          'field' => 'bbn_uid',
-          'exp' => 'uid'
-        ]]
-      ]
-    ]
-  ];
-  if (!empty($model->data['filters'])) {
-    $count_cfg['where'] = $model->data['filters'];
-  }
-  //x::log(['BEFORE COUNT', $timer->measure()]);
-  $count = $model->db->selectOne($count_cfg);
-  //x::log(['AFTER COUNT', $timer->measure()]);
-  $ret = [
-    'history' => $history_cfg['history'],
-    'data' => $rows,
-    'total' => $count,
-    'success' => true,
-    'error' => false
-  ];
+
   return $ret;
 }
+
 return [];
