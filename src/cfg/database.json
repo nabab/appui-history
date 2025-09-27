@@ -135,12 +135,9 @@
       },
       "dt": {
         "type": "datetime",
-        "null": 1,
         "extra": "VIRTUAL GENERATED",
         "virtual": true,
-        "generation": "from_unixtime(`tst`)",
-        "default": "NULL",
-        "defaultExpression": 1
+        "generation": "from_unixtime(`tst`)"
       }
     }
   },
