@@ -68,7 +68,7 @@
     },
     methods: {
       renderDate(row){
-        return dayjs(row.dt).format('DD/MM/YYYY HH:mm:ss');
+        return bbn.date(row.dt).format('DD/MM/YYYY HH:mm:ss');
       },
       renderUser(row){
         return appui.getUserName(row.usr);
